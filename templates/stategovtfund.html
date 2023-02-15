@@ -436,33 +436,26 @@
         </div>
         <!-- /.container -->
       </div>
-      <!-- /.offcanvas -->
+      <!-- /.offcanvas --> 
     </header>
         
     <div class="container py-14 py-md-10 text-center mt-8 pb-7">
       <h2 class="display-4 mb-3 ">
-        Entrepreneurship Development and Innovation Institute (EDII) -
-        Innovation Voucher Programme (IVP)
+        {{ StateGovtFund.0.Main_Heading }}
       </h2>
     </div>
     <div class="mx-10 mb-10">
       <p class="lead fs-lg mb-8 pe-xxl-2">
-        The Entrepreneurship Development and Innovation Institute (EDII),
-        Chennai is an apex organisation in the field of entrepreneurship
-        education and self-employment promotion in the state of Tamil Nadu.
+        {{ StateGovtFund.0.Sub_Heading }}
       </p>
 
       <ul>
-        <li>Established in 2001</li>
+        <li>{{ StateGovtFund.0.Point_1 }}</li>
         <li>
-          EDII was constituted by Government of Tamil Nadu as a not-for- profit
-          society and is administered by Department of Micro, Small and Medium
-          Enterprises (MSME).
+          {{ StateGovtFund.0.Point_2 }}
         </li>
         <li>
-          It is headed by the Director of the Institute, EDII is managed under
-          the superintendence of a Governing Council One of the most prominent
-          programmes offered under EDII is the Innovation Voucher Programme.
+          {{ StateGovtFund.0.Point_3 }}
         </li>
       </ul>
 
@@ -471,7 +464,7 @@
           <figure>
             <img
               class="w-auto"
-              src=" {% static 'assets/img/illustrations/i7.png' %} "
+              src=" {{ StateGovtFundSecondSection.0.image.url }} "
               srcse {% static 't="./ass' %} ets/img/illustrations/i7@2x.png 2x"
               alt=""
             />
@@ -479,19 +472,17 @@
         </div>
         <!--/column -->
         <div class="col-lg-7">
-          <h3 class="display-4 mb-5">Innovation Voucher Programme (IVP)</h3>
+          <h3 class="display-4 mb-5">{{ StateGovtFundSecondSection.0.Main_Heading }}</h3>
           <p class="mb-6">
-            Innovation Voucher Programme is the Tamil Nadu Government’s flagship
-            grant-in-aid scheme for supporting Start-ups and MSMEs.
+            {{ StateGovtFundSecondSection.0.Sub_Heading }}
           </p>
           <h2 class="display-9 mb-3">We aim at:</h2>
           <ul>
             <li>
-              Promoting Research and Innovation amongst Start-ups and MSMEs.
+              {{ StateGovtFundSecondSection.0.Point_1 }}
             </li>
             <li>
-              Companies working at innovative research can avail grant up to
-              Rs.5 lakhs
+              {{ StateGovtFundSecondSection.0.Point_2 }}
             </li>
           </ul>
 
@@ -502,14 +493,13 @@
 
       <h2 class="display-9 mb-3">Eligibility Criteria</h2>
       <p class="mb-8">
-        Innovation Voucher Programme is the Tamil Nadu Government’s flagship
-        grant-in-aid scheme for supporting Start-ups and MSMEs.
+        {{ StateGovtFundEligibilitySection.0.Sub_Heading }}
       </p>
       <ul>
-        <li>Should be a manufacturing MSME/STARTUP.</li>
-        <li>Be registered and located in Tamil Nadu.</li>
+        <li>{{ StateGovtFundEligibilitySection.0.Point_1 }}</li>
+        <li>{{ StateGovtFundEligibilitySection.0.Point_2 }}</li>
         <li>
-          Willing to co-finance the innovation investment as per IVP norms.
+          {{ StateGovtFundEligibilitySection.0.Point_3 }}
         </li>
       </ul>
       <h3 class="display-4 mb-5">IVP Grant Recipients</h3>

@@ -127,7 +127,6 @@ urlpatterns = [
     path("ourStartups_save",views.ourStartups_save),
     path("delete_startup",views.delete_startup),
     
-    path("samridth",views.samridth),
     path("sisfs",views.sisfs),
     path("testimonial",views.testimonial),
      
@@ -184,6 +183,11 @@ urlpatterns = [
     path("Start_UpTNimg1_save",views.Start_UpTNimg1_save),
     path("Start_UpTNimg2_save",views.Start_UpTNimg2_save),
  
+    path("samridth",views.samridth),
+    path("samridth_edit",views.samridth_edit),
+    path("SamridthFund_save",views.SamridthFund_save),
+    path("MeitY_SAMRIDH_save",views.MeitY_SAMRIDH_save),
+    path("BundledServices_save",views.BundledServices_save),
 
 ]
 if settings.DEBUG:

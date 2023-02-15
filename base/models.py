@@ -498,3 +498,31 @@ class Start_UpTNimg2(models.Model):
     id = models.IntegerField(primary_key=True)
     image = models.ImageField(upload_to='Start_UpTNimg2/%Y/%m/%d',default='images/user_image.png')
     last_updated_date = models.DateField(default=timezone.now())
+
+class SamridthFund(models.Model):
+    id = models.IntegerField(primary_key=True)
+    Main_Heading = models.CharField(max_length = 200)
+    Sub_Heading = models.CharField(max_length = 200)
+    Point_1 = models.CharField(max_length = 200)
+    Point_2 = models.CharField(max_length = 200)
+    Point_3 = models.CharField(max_length = 200)
+    image = models.ImageField(upload_to='Start_UpTNimg2/%Y/%m/%d',default='images/user_image.png')
+    last_updated_date = models.DateField(default=timezone.now())
+
+class MeitY_SAMRIDH(models.Model):
+    id = models.IntegerField(primary_key=True)
+    Main_Heading = models.CharField(max_length = 200)
+    Point_1 = models.CharField(max_length = 200)
+    Point_2 = models.CharField(max_length = 200)
+    Point_3 = models.CharField(max_length = 200)
+    last_updated_date = models.DateField(default=timezone.now())
+
+class BundledServices (models.Model):
+    id = models.IntegerField(primary_key=True)
+    Heading_1 = models.CharField(max_length = 200)
+    Content_1 = models.CharField(max_length = 200)
+    Heading_2 = models.CharField(max_length = 200)
+    Content_2 = models.CharField(max_length = 200)
+    Heading_3 = models.CharField(max_length = 200)
+    Content_3 = models.CharField(max_length = 200)
+    last_updated_date = models.DateField(default=timezone.now())

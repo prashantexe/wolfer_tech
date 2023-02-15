@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from .models import (Gallery,Team,logo,Carrer,blog,Testimonials,Events,HowWeWork,Birac,Tbi,DemoDayTOPSECTION,DemoDayPic,CentralGovernmentFundingDB,
-                    Start_UpTN,StateGovtFund,OurStartup,Investors,AboutHeading,MBADB,Govt_Tie,LastContent,UploadImage,GlobalMarket,GlobalMarketPic,stateGovtFunddb,
-                    Start_UpTNContent2,StateGovtFundSecondSection,International_Partners,Sisfs,WhoAreWe,Contact_SECTION,HOME_TESTIMONIAL,EventsForm,Facilities_developed,About_SISFS,
-                    Start_UpTNimg1,Start_UpTNimg2,StateGovtFundEligibilitySection,MentorConnectDB,MentorClinicDB, angelInvestorDB, new_venturesDB,TOPSECTION,WhatWeDo,OurProcess,SpendingSection,JoinOurCommunity)
+                    SamridthFund,Start_UpTN,StateGovtFund,OurStartup,Investors,AboutHeading,MBADB,Govt_Tie,LastContent,UploadImage,GlobalMarket,GlobalMarketPic,stateGovtFunddb,
+                    MeitY_SAMRIDH,Start_UpTNContent2,StateGovtFundSecondSection,International_Partners,Sisfs,WhoAreWe,Contact_SECTION,HOME_TESTIMONIAL,EventsForm,Facilities_developed,About_SISFS,
+                    BundledServices,Start_UpTNimg1,Start_UpTNimg2,StateGovtFundEligibilitySection,MentorConnectDB,MentorClinicDB, angelInvestorDB, new_venturesDB,TOPSECTION,WhatWeDo,OurProcess,SpendingSection,JoinOurCommunity)
 from .Tools import get_images,get_team,reguler_datas,get_blog,get_startup,get_DemoDayPic
 import datetime
 import json
@@ -614,10 +614,6 @@ def new_ventures_save(request):
     print("saved.....................................////////////////////////")
     return render(request,"edtior/new_ventures_edit.html")
 
-
-def samridth (request):
-    return render(request,"samridth.html")
-
 def testimonial (request):
     return render(request,"testimonials.html")
 
@@ -1157,4 +1153,50 @@ def CentralGovernmentFunding_save(request):
         print(i.Content)
     print("saved.....................................////////////////////////")
     return render(request,"edtior/CentralGovernmentFunding_edit.html")
+
+def samridth (request):
+    return render(request,"samridth.html",{'SamridthFund':SamridthFund.objects.all()[::-1],'MeitY_SAMRIDH':MeitY_SAMRIDH.objects.all()[::-1],'BundledServices':BundledServices.objects.all()[::-1]})
+
+def samridth_edit (request):
+    return render(request,"pages/samridth_edit.html",{'SamridthFund':SamridthFund.objects.all()[::-1],'MeitY_SAMRIDH':MeitY_SAMRIDH.objects.all()[::-1],'BundledServices':BundledServices.objects.all()[::-1]})
+
+
+def SamridthFund_save (request):
+    Main_Heading = request.POST.get("#Main_heading")
+    Sub_Heading = request.POST.get("#Sub_Heading")
+    Point_1 = request.POST.get("#Point_1")
+    Point_2 = request.POST.get("#Point_2")
+    Point_3 = request.POST.get("#Point_3")
+    try:
+        image = request.FILES['#upload_image1']
+        obj = SamridthFund(Main_Heading=Main_Heading,Sub_Heading=Sub_Heading,Point_1=Point_1,Point_2=Point_2,Point_3=Point_3,image=image)
+        obj.save()
+    except:
+        obj = SamridthFund.objects.all()[::-1][0]
+        obj = SamridthFund(Main_Heading=Main_Heading,Sub_Heading=Sub_Heading,Point_1=Point_1,Point_2=Point_2,Point_3=Point_3,image=obj.image)
+        obj.save()
+    return render(request,"pages/samridth_edit.html")
+
+
+def MeitY_SAMRIDH_save (request):
+    Main_Heading = request.POST.get("#Main_heading")
+    Point_1 = request.POST.get("#Point-1")
+    Point_2 = request.POST.get("#Point-2")
+    Point_3 = request.POST.get("#Point-3")
+    obj = MeitY_SAMRIDH(Main_Heading=Main_Heading,Point_1=Point_1,Point_2=Point_2,Point_3=Point_3)
+    obj.save()
+    return render(request,"pages/samridth_edit.html")
+
+def BundledServices_save (request):
+    Heading_1 = request.POST.get("#heading_1")
+    Content_1 = request.POST.get("#Content_1")
+    Heading_2 = request.POST.get("#heading_2")
+    Content_2 = request.POST.get("#Content_2")
+    Heading_3 = request.POST.get("#heading_3")
+    Content_3 = request.POST.get("#Content_3")
+    
+    obj = BundledServices(Heading_1=Heading_1,Content_1=Content_1,Heading_2=Heading_2,Content_2=Content_2,Heading_3=Heading_3,Content_3=Content_3)
+    obj.save()
+    
+    return render(request,"pages/samridth_edit.html")
 
