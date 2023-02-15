@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from .models import (Gallery,Team,logo,Carrer,blog,Testimonials,Events,HowWeWork,Birac,Tbi,
+from .models import (Gallery,Team,logo,Carrer,blog,Testimonials,Events,HowWeWork,Birac,Tbi,DemoDayTOPSECTION,DemoDayPic,
                     OurStartup,Investors,AboutHeading,MBADB,Govt_Tie,LastContent,UploadImage,GlobalMarket,GlobalMarketPic,stateGovtFunddb,
                     International_Partners,Sisfs,WhoAreWe,Contact_SECTION,HOME_TESTIMONIAL,EventsForm,Facilities_developed,About_SISFS,
                     MentorConnectDB,MentorClinicDB, angelInvestorDB, new_venturesDB,TOPSECTION,WhatWeDo,OurProcess,SpendingSection,JoinOurCommunity)
-from .Tools import get_images,get_team,reguler_datas,get_blog,get_startup
+from .Tools import get_images,get_team,reguler_datas,get_blog,get_startup,get_DemoDayPic
 import datetime
 import json
 import openpyxl
@@ -1017,3 +1017,43 @@ def Join_Our_Community_save(request):
 
     obj = JoinOurCommunity(heading=heading,Completed_Projects=Completed_Projects,Satisfied_customers=Satisfied_customers,Expert_Employees=Expert_Employees)
     obj.save()
+
+def demoday(request):
+    return render(request,"demoday.html",{'DemoDayPic':get_DemoDayPic(),'DemoDayTOPSECTION':DemoDayTOPSECTION.objects.all()[::-1]})
+
+def demoday_edit(request):
+    return render(request,"pages/demoday.html",{'DemoDayPic':get_DemoDayPic(),'DemoDayTOPSECTION':DemoDayTOPSECTION.objects.all()[::-1]})
+
+def DemoDayTOPSECTION_save(request):
+    heading = request.POST.get("#heading")
+    Content = request.POST.get("#Content")
+    obj = DemoDayTOPSECTION(Content=Content,heading=heading)
+    obj.save()
+    return render(request,"pages/demoday.html")
+
+def DemoDayPic_save(request):
+    categories = request.POST.get("#heading1")
+    image = request.FILES['#image_load']
+    obj = DemoDayPic(image=image,categories=categories)
+    obj.save()
+    return render(request,"pages/demoday.html")
+
+def delete_DemoDayPic(request):
+    id = request.POST.get("id")
+    size = len(DemoDayPic.objects.all())
+    if size > 1:
+        image = DemoDayPic.objects.get(id=id)
+        image.delete()
+    else:
+        pass
+    return render(request,"home/logo.html")
+
+def set_DemoDayPic(request):
+    id = request.POST.get("id")
+    image = DemoDayPic.objects.get(id=id)
+    image_ = image.image
+    reson = image.categories
+    image.delete()
+    obj = DemoDayPic(image=image_,categories=reson)
+    obj.save()
+    return render(request,"home/logo.html")

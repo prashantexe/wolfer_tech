@@ -1,4 +1,4 @@
-from .models import Gallery,Team,logo,blog, MentorConnectDB,OurStartup
+from .models import Gallery,Team,logo,blog, MentorConnectDB,OurStartup,DemoDayPic
 import random
 def get_vals(request,data):
     datas = []
@@ -70,6 +70,22 @@ def get_blog():
 
 def get_startup():
     images = OurStartup.objects.all()
+    cat = []
+    temp = []
+    items = []
+    for i in images:
+        cat.append(i.categories)
+    for i in list(set(cat)):
+        temp = []
+        for j in images:
+            if i == j.categories :
+                temp.append(j)
+        items.append(temp)
+    return items
+
+
+def get_DemoDayPic():
+    images = DemoDayPic.objects.all()
     cat = []
     temp = []
     items = []

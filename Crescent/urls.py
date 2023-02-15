@@ -165,6 +165,15 @@ urlpatterns = [
     path("set_GlobalMarketPic",views.set_GlobalMarketPic),
     path("delete_GlobalMarketPic",views.delete_GlobalMarketPic),
 
+    path("demoday",views.demoday),
+    path("demoday_edit",views.demoday_edit),
+    path("DemoDayTOPSECTION_save",views.DemoDayTOPSECTION_save),
+    path("DemoDayPic_save",views.DemoDayPic_save),
+    path("set_DemoDayPic",views.set_DemoDayPic),
+    path("delete_DemoDayPic",views.delete_DemoDayPic),
+
+
+
 
 
     

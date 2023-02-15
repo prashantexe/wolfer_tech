@@ -430,3 +430,21 @@ class JoinOurCommunity(models.Model):
     Satisfied_customers = models.CharField(max_length = 200)
     Expert_Employees = models.CharField(max_length = 200)
     last_updated_date = models.DateField(default=timezone.now())
+
+class DemoDayTOPSECTION(models.Model):
+    id = models.IntegerField(primary_key=True)
+    heading = models.CharField(max_length = 200)
+    Content = models.CharField(max_length = 200)
+    last_updated_date = models.DateField(default=timezone.now())
+
+class DemoDayTOPSECTION(models.Model):
+    id = models.IntegerField(primary_key=True)
+    heading = models.CharField(max_length = 200)
+    Content = models.CharField(max_length = 200)
+    last_updated_date = models.DateField(default=timezone.now())
+
+class DemoDayPic(models.Model):
+    id = models.IntegerField(primary_key=True)
+    image = models.ImageField(upload_to='DemoDayPic/%Y/%m/%d',default='images/user_image.png')
+    categories = models.CharField(max_length = 200)
+    last_updated_date = models.DateField(default=timezone.now())
