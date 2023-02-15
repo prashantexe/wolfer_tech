@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from .models import (Gallery,Team,logo,Carrer,blog,Testimonials,Events,HowWeWork,Birac,Tbi,DemoDayTOPSECTION,DemoDayPic,
-                    OurStartup,Investors,AboutHeading,MBADB,Govt_Tie,LastContent,UploadImage,GlobalMarket,GlobalMarketPic,stateGovtFunddb,
-                    International_Partners,Sisfs,WhoAreWe,Contact_SECTION,HOME_TESTIMONIAL,EventsForm,Facilities_developed,About_SISFS,
-                    MentorConnectDB,MentorClinicDB, angelInvestorDB, new_venturesDB,TOPSECTION,WhatWeDo,OurProcess,SpendingSection,JoinOurCommunity)
+from .models import (Gallery,Team,logo,Carrer,blog,Testimonials,Events,HowWeWork,Birac,Tbi,DemoDayTOPSECTION,DemoDayPic,CentralGovernmentFundingDB,
+                    Start_UpTN,StateGovtFund,OurStartup,Investors,AboutHeading,MBADB,Govt_Tie,LastContent,UploadImage,GlobalMarket,GlobalMarketPic,stateGovtFunddb,
+                    Start_UpTNContent2,StateGovtFundSecondSection,International_Partners,Sisfs,WhoAreWe,Contact_SECTION,HOME_TESTIMONIAL,EventsForm,Facilities_developed,About_SISFS,
+                    Start_UpTNimg1,Start_UpTNimg2,StateGovtFundEligibilitySection,MentorConnectDB,MentorClinicDB, angelInvestorDB, new_venturesDB,TOPSECTION,WhatWeDo,OurProcess,SpendingSection,JoinOurCommunity)
 from .Tools import get_images,get_team,reguler_datas,get_blog,get_startup,get_DemoDayPic
 import datetime
 import json
@@ -19,7 +19,7 @@ def admin(request):
 #...............gallery.......................................
 def gallery(request):
     item = get_images()
-    return render(request,"about_us/gallery.html",reguler_datas({"categories":item[0],"images":item[1]}))
+    return render(request,"gallery.html",reguler_datas({"categories":item[0],"images":item[1]}))
 #............................................................
 # upload image...............................................
 def upload_image(request):
@@ -619,18 +619,11 @@ def new_ventures_save(request):
 def samridth (request):
     return render(request,"samridth.html")
 
-def stategovtfunds (request):
-    return render(request,"stategovtfund.html")
-
 def testimonial (request):
     return render(request,"testimonials.html")
 
 def career (request):
     return render(request,"carrer.html")
-
-def gallery (request):
-    return render(request,"gallery.html")
-
 
 def home(request):
     try :
@@ -1053,7 +1046,116 @@ def set_DemoDayPic(request):
     image = DemoDayPic.objects.get(id=id)
     image_ = image.image
     reson = image.categories
-    image.delete()
+    image.delete() 
     obj = DemoDayPic(image=image_,categories=reson)
     obj.save()
     return render(request,"home/logo.html")
+
+
+def stategovtfunds (request):
+    return render(request,"stategovtfund.html")
+
+def stategovtfunds_edit (request):
+    return render(request,"pages/state_govt_fund_edit.html",{'StateGovtFund':StateGovtFund.objects.all()[::-1],'StateGovtFundSecondSection':StateGovtFundSecondSection.objects.all()[::-1],'StateGovtFundEligibilitySection':StateGovtFundEligibilitySection.objects.all()[::-1]})
+
+def StateGovtFund_save(request):
+    Main_Heading = request.POST.get("#Main_heading")
+    Sub_Heading = request.POST.get("#Sub_Heading")
+    Point_1 = request.POST.get("#Point_1")
+    Point_2 = request.POST.get("#Point_2")
+    Point_3 = request.POST.get("#Point_3")
+
+    obj = StateGovtFund(Main_Heading=Main_Heading,Sub_Heading=Sub_Heading,Point_1=Point_1,Point_2=Point_2,Point_3=Point_3)
+    obj.save()
+
+    return render(request,"pages/state_govt_fund_edit.html")
+
+def StateGovtFundSecondSection_save(request):
+    Main_Heading = request.POST.get("#Main_heading")
+    Sub_Heading = request.POST.get("#Sub-heading")
+    Point_1 = request.POST.get("#Point-1")
+    Point_2 = request.POST.get("#Point-2")
+    Point_3 = request.POST.get("#Point-3")
+
+    try:
+        image = request.FILES['#fileInput-single11']
+        obj = StateGovtFundSecondSection(image=image,Main_Heading=Main_Heading,Sub_Heading=Sub_Heading,Point_1=Point_1,Point_2=Point_2,Point_3=Point_3)
+        obj.save()
+    except:
+        obj = StateGovtFundSecondSection.objects.all()[::-1][0]
+        obj = StateGovtFundSecondSection(image=obj.image,Main_Heading=Main_Heading,Sub_Heading=Sub_Heading,Point_1=Point_1,Point_2=Point_2,Point_3=Point_3)
+        obj.save()
+
+    print("saved")
+
+    return render(request,"pages/state_govt_fund_edit.html")
+
+
+def StateGovtFundEligibilitySection_save(request):
+    Sub_Heading = request.POST.get("#sub_heading")
+    Point_1 = request.POST.get("#point_1")
+    Point_2 = request.POST.get("#point_2")
+    Point_3 = request.POST.get("#point_3")
+
+    obj = StateGovtFundEligibilitySection(Sub_Heading=Sub_Heading,Point_1=Point_1,Point_2=Point_2,Point_3=Point_3)
+    obj.save()
+
+    print('saved')
+
+    return render(request,"pages/state_govt_fund_edit.html")
+
+
+
+
+def startuptn (request):
+    return render(request,"startupTN.html")
+
+def startuptn_edit (request):
+    return render(request,"pages/startupTN_edit.html",{'Start_UpTN':Start_UpTN.objects.all()[::-1],'Start_UpTNContent2':Start_UpTNContent2.objects.all()[::-1],'Start_UpTNimg1':Start_UpTNimg1.objects.all()[::-1],'Start_UpTNimg2':Start_UpTNimg2.objects.all()[::-1]})
+
+def Start_UpTN_save(request):
+    Heading = request.POST.get("#heading")
+    Content_1 = request.POST.get("#Content")
+    obj = Start_UpTN(Heading=Heading,Content_1=Content_1)
+    obj.save()
+    return render(request,"pages/startupTN_edit.html")
+
+
+def Start_UpTNContent2_save(request):
+    Content_2 = request.POST.get("#heading1")
+    obj = Start_UpTNContent2(Content_2=Content_2)
+    obj.save()
+    return render(request,"pages/startupTN_edit.html")
+
+def Start_UpTNimg1_save(request):
+    image = request.FILES['#fileInput-single11']
+    obj = Start_UpTNimg1(image=image)
+    obj.save()
+    return render(request,"pages/startupTN_edit.html")
+
+def Start_UpTNimg2_save(request):
+    image = request.FILES['#fileInput-single2']
+    obj = Start_UpTNimg2(image=image)
+    obj.save()
+    print("saved")
+    return render(request,"pages/startupTN_edit.html")
+
+
+
+def CentralGovernmentFunding (request):
+    data = CentralGovernmentFundingDB.objects.all()[::-1]
+    print(data)
+    return render(request,"newventures.html",{'mentor':data,'sample':'hi'})
+
+def CentralGovernmentFunding_edit(request):
+    return render(request,"edtior/CentralGovernmentFunding_edit.html",{'mentor':CentralGovernmentFundingDB.objects.all()[::-1]})
+
+def CentralGovernmentFunding_save(request):
+    content = request.POST.get('#content')
+    obj = CentralGovernmentFundingDB(Content=content)
+    obj.save()
+    for i in CentralGovernmentFundingDB.objects.all():
+        print(i.Content)
+    print("saved.....................................////////////////////////")
+    return render(request,"edtior/CentralGovernmentFunding_edit.html")
+

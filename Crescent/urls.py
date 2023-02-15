@@ -26,7 +26,6 @@ urlpatterns = [
     path('', views.home),
     path('admin',views.admin),
 
-    path('gallery',views.gallery),
     path('upload_image',views.upload_image),
     path('delete_image',views.delete_image),
     
@@ -119,17 +118,17 @@ urlpatterns = [
     path("new_ventures_edit",views.new_ventures_edit),
     path("new_ventures_save",views.new_ventures_save),
 
+    path("CentralGovernmentFunding",views.CentralGovernmentFunding),
+    path("CentralGovernmentFunding_edit",views.CentralGovernmentFunding_edit),
+    path("CentralGovernmentFunding_save",views.CentralGovernmentFunding_save),
+
     path("ourstartups",views.ourStartups),
     path("ourStartups_edit",views.ourStartups_edit),
     path("ourStartups_save",views.ourStartups_save),
     path("delete_startup",views.delete_startup),
-
-
-
     
     path("samridth",views.samridth),
     path("sisfs",views.sisfs),
-    path("stategovtfunds",views.stategovtfunds),
     path("testimonial",views.testimonial),
      
     path("career",views.career),
@@ -172,11 +171,18 @@ urlpatterns = [
     path("set_DemoDayPic",views.set_DemoDayPic),
     path("delete_DemoDayPic",views.delete_DemoDayPic),
 
+    path("stategovtfunds",views.stategovtfunds),
+    path("stategovtfunds_edit",views.stategovtfunds_edit),
+    path("StateGovtFund_save",views.StateGovtFund_save),
+    path("StateGovtFundSecondSection_save",views.StateGovtFundSecondSection_save),
+    path("StateGovtFundEligibilitySection_save",views.StateGovtFundEligibilitySection_save),
 
-
-
-
-    
+    path("startuptn",views.startuptn),
+    path("startuptn_edit",views.startuptn_edit),
+    path("Start_UpTN_save",views.Start_UpTN_save),
+    path("Start_UpTNContent2_save",views.Start_UpTNContent2_save),
+    path("Start_UpTNimg1_save",views.Start_UpTNimg1_save),
+    path("Start_UpTNimg2_save",views.Start_UpTNimg2_save),
 
 
 ]

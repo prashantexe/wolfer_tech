@@ -448,3 +448,53 @@ class DemoDayPic(models.Model):
     image = models.ImageField(upload_to='DemoDayPic/%Y/%m/%d',default='images/user_image.png')
     categories = models.CharField(max_length = 200)
     last_updated_date = models.DateField(default=timezone.now())
+
+
+class StateGovtFund(models.Model):
+    id = models.IntegerField(primary_key=True)
+    Main_Heading = models.CharField(max_length = 200)
+    Sub_Heading = models.CharField(max_length = 200)
+    Point_1 = models.CharField(max_length = 200)
+    Point_2 = models.CharField(max_length = 200)
+    Point_3 = models.CharField(max_length = 200)
+    last_updated_date = models.DateField(default=timezone.now())
+
+class StateGovtFundSecondSection(models.Model):
+    id = models.IntegerField(primary_key=True)
+    Main_Heading = models.CharField(max_length = 200)
+    Sub_Heading = models.CharField(max_length = 200)
+    Point_1 = models.CharField(max_length = 200)
+    Point_2 = models.CharField(max_length = 200)
+    Point_3 = models.CharField(max_length = 200)
+    image = models.ImageField(upload_to='StateGovtFundSecondSection/%Y/%m/%d',default='images/user_image.png')
+    last_updated_date = models.DateField(default=timezone.now())
+
+class StateGovtFundEligibilitySection(models.Model):
+    id = models.IntegerField(primary_key=True)
+    Sub_Heading = models.CharField(max_length = 200)
+    Point_1 = models.CharField(max_length = 200)
+    Point_2 = models.CharField(max_length = 200)
+    Point_3 = models.CharField(max_length = 200)
+    last_updated_date = models.DateField(default=timezone.now())
+
+
+class Start_UpTN(models.Model):
+    id = models.IntegerField(primary_key=True)
+    Heading = models.CharField(max_length = 200)
+    Content_1 = models.CharField(max_length = 200)
+    last_updated_date = models.DateField(default=timezone.now())
+
+class Start_UpTNContent2(models.Model):
+    id = models.IntegerField(primary_key=True)
+    Content_2 = models.CharField(max_length = 200)
+    last_updated_date = models.DateField(default=timezone.now())
+
+class Start_UpTNimg1(models.Model):
+    id = models.IntegerField(primary_key=True)
+    image = models.ImageField(upload_to='Start_UpTNimg1/%Y/%m/%d',default='images/user_image.png')
+    last_updated_date = models.DateField(default=timezone.now())
+
+class Start_UpTNimg2(models.Model):
+    id = models.IntegerField(primary_key=True)
+    image = models.ImageField(upload_to='Start_UpTNimg2/%Y/%m/%d',default='images/user_image.png')
+    last_updated_date = models.DateField(default=timezone.now())

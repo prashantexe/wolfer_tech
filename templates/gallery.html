@@ -401,195 +401,30 @@
           <div class="isotope-filter filter mb-10">
             <ul>
               <li><a class="filter-item active" data-filter="*">All</a></li>
-              <li><a class="filter-item" data-filter=".foods">Events</a></li>
-              <li><a class="filter-item" data-filter=".drinks">ISO </a></li>
-              <li><a class="filter-item" data-filter=".events">Labs</a></li>
-              <li>
-                <a class="filter-item" data-filter=".pastries">VIP Visits</a>
-              </li>
+            {% for i in categories %}
+
+              <li><a class="filter-item" data-filter=".{{ i.0.categories }}">{{ i.0.categories }}</a></li>
+
+            {% endfor %}
+  
             </ul>
           </div>
           <div class="row gx-md-6 gy-6 isotope">
-            <div class="project item col-md-6 col-xl-4 drinks events">
+            
+            {% for i in images %} 
+            <div class="project item col-md-6 col-xl-4 drinks {{ i.categories }}">
               <figure class="overlay overlay-1 rounded">
                 <a
                   href="https://img.freepik.com/free-vector/college-students-concept-illustration_114360-10205.jpg?size=626&ext=jpg"
                   data-glightbox
                   data-gallery="shots-group"
                 >
-                  <img src="https://img.freepik.com/free-vector/college-students-concept-illustration_114360-10205.jpg?size=626&ext=jpg" alt=""
+                  <img src=" {{ i.image.url }}" alt=""
                 /></a>
               </figure>
             </div>
-            <!-- /.project -->
-            <div class="project item col-md-6 col-xl-4 events">
-              <figure class="overlay overlay-1 rounded">
-                <a
-                  href=" {% static 'pexels-photo-207684.jpeg' %} "
-                  data-glightbox
-                  data-gallery="shots-group"
-                >
-                  <img src=" {% static 'pexels-photo-207684.jpeg' %} " alt=""
-                /></a>
-              </figure>
-            </div>
-            <!-- /.project -->
-            <div class="project item col-md-6 col-xl-4 drinks foods">
-              <figure class="overlay overlay-1 rounded">
-                <a
-                  href=" {% static 'pexels-photo-256455.jpeg' %} "
-                  data-glightbox
-                  data-gallery="shots-group"
-                >
-                  <img src=" {% static 'pexels-photo-256455.jpeg' %} " alt=""
-                /></a>
-              </figure>
-            </div>
-            <!-- /.project -->
-            <div class="project item col-md-6 col-xl-4 pastries">
-              <figure class="overlay overlay-1 rounded">
-                <a
-                  href=" {% static 'pexels-photo-935948.jpeg' %} "
-                  data-glightbox
-                  data-gallery="shots-group"
-                >
-                  <img src=" {% static 'pexels-photo-935948.jpeg' %} " alt=""
-                /></a>
-              </figure>
-            </div>
-            <!-- /.project -->
-            <div class="project item col-md-6 col-xl-4 events">
-              <figure class="overlay overlay-1 rounded">
-                <a
-                  href=" {% static 'pexels-photo-256395.jpeg' %} "
-                  data-glightbox
-                  data-gallery="shots-group"
-                >
-                  <img src=" {% static 'pexels-photo-256395.jpeg' %} " alt=""
-                /></a>
-              </figure>
-            </div>
-            <!-- /.project -->
-            <div class="project item col-md-6 col-xl-4 pastries events">
-              <figure class="overlay overlay-1 rounded">
-                <a
-                  href=" {% static 'pexels-photo-256490.jpeg' %} "
-                  data-glightbox
-                  data-gallery="shots-group"
-                >
-                  <img src=" {% static 'pexels-photo-256490.jpe' %} " alt=""
-                /></a>
-              </figure>
-            </div>
-            <!-- /.project -->
-            <div class="project item col-md-6 col-xl-4 foods">
-              <figure class="overlay overlay-1 rounded">
-                <a
-                  href=" {% static 'pexels-photo-632470.webp' %} "
-                  data-glightbox
-                  data-gallery="shots-group"
-                >
-                  <img src=" {% static 'pexels-photo-632470.webp' %} " alt=""
-                /></a>
-              </figure>
-            </div>
-            <!-- /.project -->
-            <div class="project item col-md-6 col-xl-4 foods drinks">
-              <figure class="overlay overlay-1 rounded">
-                <a
-                  href=" {% static 'pexels-photo-933964.jpeg' %} "
-                  data-glightbox
-                  data-gallery="shots-group"
-                >
-                  <img src=" {% static 'pexels-photo-933964.jpeg' %} " alt=""
-                /></a>
-              </figure>
-            </div>
+            {% endfor %}
 
-            <!-- /.project -->
-            <div class="project item col-md-6 col-xl-4 events">
-              <figure class="overlay overlay-1 rounded">
-                <a
-                  href=" {% static 'pexels-photo-1251861.webp' %} "
-                  data-glightbox
-                  data-gallery="shots-group"
-                >
-                  <img src=" {% static 'pexels-photo-1251861.webp' %} " alt=""
-                /></a>
-              </figure>
-            </div>
-            <!-- /.project -->
-            <div class="project item col-md-6 col-xl-4 foods">
-              <figure class="overlay overlay-1 rounded">
-                <a
-                  href=" {% static 'pexels-photo-1454360.jpeg' %} "
-                  data-glightbox
-                  data-gallery="shots-group"
-                >
-                  <img src=" {% static 'pexels-photo-1454360.jpeg' %} " alt=""
-                /></a>
-              </figure>
-            </div>
-            <!-- /.project -->
-            <div class="project item col-md-6 col-xl-4 drinks">
-              <figure class="overlay overlay-1 rounded">
-                <a
-                  href=" {% static 'pexels-photo-2305098.jpeg' %} "
-                  data-glightbox
-                  data-gallery="shots-group"
-                >
-                  <img src=" {% static 'pexels-photo-2305098.jpeg' %} " alt=""
-                /></a>
-              </figure>
-            </div>
-            <!-- /.project -->
-            <div class="project item col-md-6 col-xl-4 foods">
-              <figure class="overlay overlay-1 rounded">
-                <a
-                  href=" {% static 'pexels-photo-2982449.jpeg' %} "
-                  data-glightbox
-                  data-gallery="shots-group"
-                >
-                  <img src=" {% static 'pexels-photo-2982449.jpeg' %} " alt=""
-                /></a>
-              </figure>
-            </div>
-            <!-- /.project -->
-            <div class="project item col-md-6 col-xl-4 drinks">
-              <figure class="overlay overlay-1 rounded">
-                <a
-                  href=" {% static 'pexels-photo-6334916.jpeg' %} "
-                  data-glightbox
-                  data-gallery="shots-group"
-                >
-                  <img src=" {% static 'pexels-photo-6334916.jpeg' %} " alt=""
-                /></a>
-              </figure>
-            </div>
-            <!-- /.project -->
-            <div class="project item col-md-6 col-xl-4 foods">
-              <figure class="overlay overlay-1 rounded">
-                <a
-                  href=" {% static 'pexels-photo-1454360.jpeg' %} "
-                  data-glightbox
-                  data-gallery="shots-group"
-                >
-                  <img src=" {% static 'pexels-photo-1454360.jpeg' %} " alt=""
-                /></a>
-              </figure>
-            </div>
-            <!-- /.project -->
-            <div class="project item col-md-6 col-xl-4 foods drinks">
-              <figure class="overlay overlay-1 rounded">
-                <a
-                  href=" {% static 'pexels-photo-933964.jpeg' %} "
-                  data-glightbox
-                  data-gallery="shots-group"
-                >
-                  <img src=" {% static 'pexels-photo-933964.jpeg' %} " alt=""
-                /></a>
-              </figure>
-            </div>
 
             <!-- /.project -->
           </div>
