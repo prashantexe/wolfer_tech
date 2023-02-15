@@ -183,7 +183,7 @@ urlpatterns = [
     path("Start_UpTNContent2_save",views.Start_UpTNContent2_save),
     path("Start_UpTNimg1_save",views.Start_UpTNimg1_save),
     path("Start_UpTNimg2_save",views.Start_UpTNimg2_save),
-
+ 
 
 ]
 if settings.DEBUG:

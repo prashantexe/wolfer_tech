@@ -247,10 +247,9 @@ def birac(request):
     for i in re_view:
         if '~' in i:
            topic[i.split('~')[1]] = i.split('~')[0]
-            
     print(topic)
 
-    return render(request,"about_us/birac.html",reguler_datas({'birac':obj,"topic":topic}))
+    return render(request,"about_us/birac.html",reguler_datas({'birac':obj,'view':topic,'Facilities_developed':Facilities_developed.objects.all()}))
 
 def birac_edit(request):
     obj = Birac.objects.all()[::-1]
@@ -1053,7 +1052,7 @@ def set_DemoDayPic(request):
 
 
 def stategovtfunds (request):
-    return render(request,"stategovtfund.html")
+    return render(request,"stategovtfund.html",{'StateGovtFund':StateGovtFund.objects.all()[::-1],'StateGovtFundSecondSection':StateGovtFundSecondSection.objects.all()[::-1],'StateGovtFundEligibilitySection':StateGovtFundEligibilitySection.objects.all()[::-1]})
 
 def stategovtfunds_edit (request):
     return render(request,"pages/state_govt_fund_edit.html",{'StateGovtFund':StateGovtFund.objects.all()[::-1],'StateGovtFundSecondSection':StateGovtFundSecondSection.objects.all()[::-1],'StateGovtFundEligibilitySection':StateGovtFundEligibilitySection.objects.all()[::-1]})
@@ -1108,7 +1107,7 @@ def StateGovtFundEligibilitySection_save(request):
 
 
 def startuptn (request):
-    return render(request,"startupTN.html")
+    return render(request,"startupTN.html",{'Start_UpTN':Start_UpTN.objects.all()[::-1],'Start_UpTNContent2':Start_UpTNContent2.objects.all()[::-1],'Start_UpTNimg1':Start_UpTNimg1.objects.all()[::-1],'Start_UpTNimg2':Start_UpTNimg2.objects.all()[::-1]})
 
 def startuptn_edit (request):
     return render(request,"pages/startupTN_edit.html",{'Start_UpTN':Start_UpTN.objects.all()[::-1],'Start_UpTNContent2':Start_UpTNContent2.objects.all()[::-1],'Start_UpTNimg1':Start_UpTNimg1.objects.all()[::-1],'Start_UpTNimg2':Start_UpTNimg2.objects.all()[::-1]})
