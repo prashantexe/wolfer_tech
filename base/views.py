@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import (Gallery,Team,logo,Carrer,blog,Testimonials,Events,HowWeWork,Birac,Tbi,
                     OurStartup,Investors,AboutHeading,MBADB,Govt_Tie,LastContent,UploadImage,GlobalMarket,GlobalMarketPic,stateGovtFunddb,
                     International_Partners,Sisfs,WhoAreWe,Contact_SECTION,HOME_TESTIMONIAL,EventsForm,Facilities_developed,About_SISFS,
-                    MentorConnectDB,MentorClinicDB, angelInvestorDB, new_venturesDB)
+                    MentorConnectDB,MentorClinicDB, angelInvestorDB, new_venturesDB,TOPSECTION,WhatWeDo,OurProcess,SpendingSection,JoinOurCommunity)
 from .Tools import get_images,get_team,reguler_datas,get_blog,get_startup
 import datetime
 import json
@@ -598,6 +598,22 @@ def angelInvestor_save(request):
     print("saved.....................................////////////////////////")
     return render(request,"edtior/angelInvestor_edit.html")
 
+def new_ventures (request):
+    data = new_venturesDB.objects.all()[::-1]
+    print(data)
+    return render(request,"newventures.html",{'mentor':data,'sample':'hi'})
+
+def new_ventures_edit(request):
+    return render(request,"edtior/new_ventures_edit.html",{'mentor':new_venturesDB.objects.all()[::-1]})
+
+def new_ventures_save(request):
+    content = request.POST.get('#content')
+    obj = new_venturesDB(Content=content)
+    obj.save()
+    for i in new_venturesDB.objects.all():
+        print(i.Content)
+    print("saved.....................................////////////////////////")
+    return render(request,"edtior/new_ventures_edit.html")
 
 
 def samridth (request):
@@ -706,7 +722,6 @@ def  Contact_Section(request):
         print(i.Title)
 
     return render(request,"gallery.html")
-
 
 def investors(request):
     ids = ['#fileInput-single2','#sub-heading']
@@ -883,14 +898,9 @@ def About_heading_save (request):
 
     return render(request,"pages/about_edit.html",{})
 
-def service (request):
-    return render(request,"service.html")
-
-def service_edit (request):
-    return render(request,"pages/service_edit.html")
 
 def Global_Market (request):
-    return render(request,"globalmarket.html")
+    return render(request,"globalmarket.html",{'pics':GlobalMarketPic.objects.all()[::-1],'title':GlobalMarket.objects.all()[::-1]})
 
 def GlobalMarket_edit (request):
     return render(request,"pages/global_market_edit.html",{'pics':GlobalMarketPic.objects.all()[::-1],'title':GlobalMarket.objects.all()[::-1]})
@@ -915,7 +925,7 @@ def delete_GlobalMarketPic(request):
     id = request.POST.get("id")
     size = len(GlobalMarketPic.objects.all())
     if size > 1:
-        image = GlobalMarketPic.objects.get(L_id=id)
+        image = GlobalMarketPic.objects.get(id=id)
         image.delete()
     else:
         pass
@@ -923,7 +933,7 @@ def delete_GlobalMarketPic(request):
 
 def set_GlobalMarketPic(request):
     id = request.POST.get("id")
-    image = GlobalMarketPic.objects.get(L_id=id)
+    image = GlobalMarketPic.objects.get(id=id)
     image_ = image.image
     reson = image.title
     image.delete()
@@ -931,38 +941,79 @@ def set_GlobalMarketPic(request):
     obj.save()
     return render(request,"home/logo.html")
 
+def service (request):
+    return render(request,"service.html",{'JoinOurCommunity':JoinOurCommunity.objects.all()[::-1],'SpendingSection':SpendingSection.objects.all()[::-1],'OurProcess':OurProcess.objects.all()[::-1],'top':TOPSECTION.objects.all()[::-1],'WhatWeDo':WhatWeDo.objects.all()[::-1]})
 
-def new_ventures (request):
-    data = new_venturesDB.objects.all()[::-1]
-    print(data)
-    return render(request,"newventures.html",{'mentor':data,'sample':'hi'})
+def service_edit (request):
+    return render(request,"pages/service_edit.html",{'JoinOurCommunity':JoinOurCommunity.objects.all()[::-1],'SpendingSection':SpendingSection.objects.all()[::-1],'OurProcess':OurProcess.objects.all()[::-1],'top':TOPSECTION.objects.all()[::-1],'WhatWeDo':WhatWeDo.objects.all()[::-1]})
 
-def new_ventures_edit(request):
-    return render(request,"edtior/new_ventures_edit.html",{'mentor':new_venturesDB.objects.all()[::-1]})
+def TopSection_save(request):
+    Sub_Heading = request.POST.get("#sub_heading")
+    Heading = request.POST.get("#heading")
 
-def new_ventures_save(request):
-    content = request.POST.get('#content')
-    obj = new_venturesDB(Content=content)
+    try:
+        image = request.FILES['#image_upload1']
+        obj = TOPSECTION(Heading=Heading,Sub_Heading=Sub_Heading,image=image)
+        obj.save()
+    except:
+        obj = TOPSECTION.objects.all()[::-1][0]
+        obj = TOPSECTION(Heading=Heading,Sub_Heading=Sub_Heading,image=obj.image)
+        obj.save()
+
     obj.save()
-    for i in new_venturesDB.objects.all():
-        print(i.Content)
-    print("saved.....................................////////////////////////")
-    return render(request,"edtior/new_ventures_edit.html")
+    print("saved")
+    return render(request,"pages/service_edit.html")
 
+def WhatWedo_save(request):
+    Sub_Heading = request.POST.get("#Sub-heading")
+    Para_below_heading = request.POST.get("#Point-1")
+    para_27 = request.POST.get("#Point-2")
+    Secure_Payment_para = request.POST.get("#Point-3")
+    Daily_Update_para = request.POST.get("#Point-4")
+    Market_Research_para = request.POST.get("#Point-5")
 
-def state_govt_fund (request):
-    data = stateGovtFunddb.objects.all()[::-1]
-    print(data)
-    return render(request,"newventures.html",{'mentor':data,'sample':'hi'})
-
-def state_govt_fund_edit(request):
-    return render(request,"edtior/state_govt_fund_edit.html",{'mentor':stateGovtFunddb.objects.all()[::-1]})
-
-def state_govt_fund_save(request):
-    content = request.POST.get('#content')
-    obj = stateGovtFunddb(Content=content)
+    obj = WhatWeDo(Sub_Heading=Sub_Heading,Para_below_heading=Para_below_heading,para_27=para_27,Secure_Payment_para=Secure_Payment_para,Daily_Update_para=Daily_Update_para,Market_Research_para=Market_Research_para)
     obj.save()
-    for i in stateGovtFunddb.objects.all():
-        print(i.Content)
-    print("saved.....................................////////////////////////")
-    return render(request,"edtior/state_govt_fund_edit.html")
+    return render(request,"pages/service_edit.html")
+
+['#sub_heading','#para_1','#para_2','#heading_1']
+
+def Our_Process_save(request):
+    heading = request.POST.get("#sub_heading")
+    concept_para = request.POST.get("#para_1")
+    prepare_para = request.POST.get("#para_2")
+    retouch_para = request.POST.get("#heading_1")
+    obj = OurProcess(heading=heading,concept_para=concept_para,prepare_para=prepare_para,retouch_para=retouch_para)
+    obj.save()
+
+    return render(request,"pages/service_edit.html")
+
+def Spending_Section_save(request):
+    heading = request.POST.get("#Sub-heading")
+    point3 = request.POST.get("#para_1")
+    Para_below_heading = request.POST.get("#Para_below_heading")
+    Point_1 = request.POST.get("#Point-1")
+    Point_2 = request.POST.get("#Point-2")
+    Point_3 = request.POST.get("#Point-3")
+    Point_4 = request.POST.get("#Point-4")
+    
+    try:
+        image = request.FILES['#upload_image1']
+        obj = SpendingSection(image=image,heading=heading,Para_below_heading=Para_below_heading,Point_1=Point_1,Point_2=Point_2,Point_3=Point_3,Point_4=Point_4)
+        obj.save()
+    except:
+        obj = SpendingSection.objects.all()[::-1][0]
+        obj = SpendingSection(image=obj.image,heading=heading,point3=point3,Para_below_heading=Para_below_heading,Point_1=Point_1,Point_2=Point_2,Point_3=Point_3,Point_4=Point_4)
+        obj.save()
+
+    return render(request,"pages/service_edit.html")
+
+
+def Join_Our_Community_save(request):
+    heading = request.POST.get("#Sub-heading")
+    Completed_Projects = request.POST.get("#Completed_projects")
+    Satisfied_customers = request.POST.get("#Satisfied_customers")
+    Expert_Employees = request.POST.get("#Expert_Employees")
+
+    obj = JoinOurCommunity(heading=heading,Completed_Projects=Completed_Projects,Satisfied_customers=Satisfied_customers,Expert_Employees=Expert_Employees)
+    obj.save()

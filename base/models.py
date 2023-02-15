@@ -386,4 +386,47 @@ class GlobalMarketPic(models.Model):
     image = models.ImageField(upload_to='GlobalMarketPic/%Y/%m/%d',default='images/user_image.png')
     last_updated_date = models.DateField(default=timezone.now())
 
+class TOPSECTION(models.Model):
+    id = models.IntegerField(primary_key=True)
+    Heading = models.CharField(max_length = 200)
+    Sub_Heading = models.CharField(max_length = 200)
+    image = models.ImageField(upload_to='GlobalMarketPic/%Y/%m/%d',default='images/user_image.png')
+    last_updated_date = models.DateField(default=timezone.now())
 
+class WhatWeDo(models.Model):
+    id = models.IntegerField(primary_key=True)
+    Sub_Heading = models.CharField(max_length = 200)
+    Para_below_heading = models.CharField(max_length = 200)
+    para_27 = models.CharField(max_length = 200)
+    Secure_Payment_para = models.CharField(max_length = 200)
+    Daily_Update_para = models.CharField(max_length = 200)
+    Market_Research_para = models.CharField(max_length = 200)
+    last_updated_date = models.DateField(default=timezone.now())
+
+
+class OurProcess(models.Model):
+    id = models.IntegerField(primary_key=True)
+    heading = models.CharField(max_length = 200)
+    concept_para = models.CharField(max_length = 200)
+    prepare_para = models.CharField(max_length = 200)
+    retouch_para = models.CharField(max_length = 200)
+    last_updated_date = models.DateField(default=timezone.now())
+
+class SpendingSection(models.Model):
+    id = models.IntegerField(primary_key=True)
+    heading = models.CharField(max_length = 200)
+    Para_below_heading = models.CharField(max_length = 200)
+    Point_1 = models.CharField(max_length = 200)
+    Point_2 = models.CharField(max_length = 200)
+    Point_3 = models.CharField(max_length = 200)
+    Point_4 = models.CharField(max_length = 200)
+    image = models.ImageField(upload_to='GlobalMarketPic/%Y/%m/%d',default='images/user_image.png')
+    last_updated_date = models.DateField(default=timezone.now())
+
+class JoinOurCommunity(models.Model):
+    id = models.IntegerField(primary_key=True)
+    heading = models.CharField(max_length = 200)
+    Completed_Projects = models.CharField(max_length = 200)
+    Satisfied_customers = models.CharField(max_length = 200)
+    Expert_Employees = models.CharField(max_length = 200)
+    last_updated_date = models.DateField(default=timezone.now())

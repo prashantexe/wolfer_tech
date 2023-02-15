@@ -119,11 +119,6 @@ urlpatterns = [
     path("new_ventures_edit",views.new_ventures_edit),
     path("new_ventures_save",views.new_ventures_save),
 
-    path("state_govt_fund_edit",views.state_govt_fund_edit),
-    path("state_govt_fund_edit_edit",views.state_govt_fund_edit),
-    path("state_govt_fund_edit_save",views.state_govt_fund_save),
-
-
     path("ourstartups",views.ourStartups),
     path("ourStartups_edit",views.ourStartups_edit),
     path("ourStartups_save",views.ourStartups_save),
@@ -155,6 +150,13 @@ urlpatterns = [
     
     path("service",views.service),
     path("service_edit",views.service_edit),
+    path("TopSection_save",views.TopSection_save),
+    path("WhatWedo_save",views.WhatWedo_save),
+    path("Our_Process_save",views.Our_Process_save),
+    path("Spending_Section_save",views.Spending_Section_save),
+    path("Join_Our_Community_save",views.Join_Our_Community_save),
+
+
 
     path("globalMarket",views.Global_Market),
     path("GlobalMarket_edit",views.GlobalMarket_edit),

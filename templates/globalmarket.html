@@ -434,13 +434,11 @@
     <!-- /.offcanvas -->
   </header>
     <div class="container py-14 py-md-10 text-center mt-10 pt-6">
-        <h2 class="display-4 mb-3">Global Market Connect</h2>
+        <h2 class="display-4 mb-3">{{ title.0.Heading }}</h2>
         </div>
     
         <div class="mx-10 mb-10">
-            <p class="lead">CIIC has partnerships with different places such as Dubai, Africa, Europe, and America.</p>
-            
-
+            <p class="lead">{{ title.0.Content }}</p>
 
             <section class="wrapper bg-light">
                 <div class="container py-4 py-md-6">
@@ -448,51 +446,20 @@
                   <!-- /.row -->
                   <div class="grid grid-view projects-masonry">
                     <div class="row gx-md-8 gy-10 gy-md-13 isotope">
+                      {% for i in pics %}
                       <div class="project item col-md-6 col-xl-4 product">
-                        <figure class="lift rounded mb-6"> <img src="https://www.ciic.ventures/wp-content/uploads/2022/02/dubai-partners.jpg" alt="" /></figure>
+                        <figure class="lift rounded mb-6"> <img src="{{ i.image.url }}" alt="" /></figure>
                         <div class="project-details d-flex justify-content-center flex-column">
                           <div class="post-header">
-                            <h2 class="post-title h3">Dubai Partners
+                            <h2 class="post-title h3">{{ i.title }}
                             </h2>
                           </div>
                           <!-- /.post-header -->
                         </div>
                         <!-- /.project-details -->
                       </div>
-                      
-                      <div class="project item col-md-6 col-xl-4 product">
-                        <figure class="lift rounded mb-6"> <img src="https://www.ciic.ventures/wp-content/uploads/2022/02/European-partners.jpg" alt="" /></figure>
-                        <div class="project-details d-flex justify-content-center flex-column">
-                          <div class="post-header">
-                            <h2 class="post-title h3">European Partners
-                             </h2>
-                          </div>
-                          <!-- /.post-header -->
-                        </div>
-                        <!-- /.project-details -->
-                      </div>
-                      <div class="project item col-md-6 col-xl-4 product">
-                        <figure class="lift rounded mb-6"> <img src="https://www.ciic.ventures/wp-content/uploads/2022/02/European-partners.jpg" alt="" /></figure>
-                        <div class="project-details d-flex justify-content-center flex-column">
-                          <div class="post-header">
-                            <h2 class="post-title h3">African Partners
-                            </h2>
-                          </div>
-                          <!-- /.post-header -->
-                        </div>
-                        <!-- /.project-details -->
-                      </div>
-                      <div class="project item col-md-6 col-xl-4 product">
-                        <figure class="lift rounded mb-6"><img src="https://www.ciic.ventures/wp-content/uploads/2022/02/American-partners.jpg" alt="" /></figure>
-                        <div class="project-details d-flex justify-content-center flex-column">
-                          <div class="post-header">
-                            <h2 class="post-title h3">American Partners
-                            </h2>
-                          </div>
-                          <!-- /.post-header -->
-                        </div>
-                        <!-- /.project-details -->
-                      </div>
+                      {% endfor %}
+                
                       <!-- /.project -->
                     </div>
                     <!-- /.row -->

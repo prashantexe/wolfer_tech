@@ -428,8 +428,9 @@
                                   <div class="w-full p-1 md:p-2">
                                       <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg"src="{{ j.image.url }}">
                                   </div>
+                                    <h3>Title : {{ j.title }}</h3>
                                   <div style="    display: flex; flex-direction: row; flex-wrap: wrap; align-content: center; justify-content: space-between; width: 100%; align-items: center;">
-                                    <button onclick="del('GlobalMarketPic_save','{{ j.id }}')" style="display: flex; flex-wrap: nowrap; flex-direction: row; align-content: center; justify-content: center; align-items: center;"><iconify-icon icon="ic:baseline-delete-forever" style="color: red;" width="20" height="20"></iconify-icon>
+                                    <button onclick="del('delete_GlobalMarketPic','{{ j.id }}')" style="display: flex; flex-wrap: nowrap; flex-direction: row; align-content: center; justify-content: center; align-items: center;"><iconify-icon icon="ic:baseline-delete-forever" style="color: red;" width="20" height="20"></iconify-icon>
                                     <h6>Delete</h6></button><button onclick="del('set_GlobalMarketPic','{{ j.id }}')" style="display: flex; flex-wrap: nowrap; flex-direction: row; align-content: center; justify-content: center; align-items: center;"><iconify-icon icon="icon-park:difference-set" width="20" height="20"></iconify-icon>
                                       <h6>set logo</h6></button>
                                   </div>
@@ -459,32 +460,31 @@
   </div>
   <script>
     function img_upload(url,img,datas) {
-            console.log(datas,img)
-            var data = new FormData();
-            data.append(img, $(img)[0].files[0]);
-            data.append('tags',input.value);
-            data.append("csrfmiddlewaretoken", $("input[name=csrfmiddlewaretoken]").val());
-            for(let i=0;i<datas.length;i++){
-              data.append(datas[i],$(datas[i]).val())
-            }
-            $.ajax({
-                method: "POST",
-                url: url,
-                processData: false,
-                contentType: false,
-                mimeType: "multipart/form-data",
-                data: data,
-                success: function(data) {
-                    if (data.status == "Upload Done") {
-                        console.log("Uploading Done successfully")
-                    }
-                    else{
-                        console.log('error')
-                    }
+                console.log(datas,img)
+                var data = new FormData();
+                data.append(img, $(img)[0].files[0]);
+                data.append("csrfmiddlewaretoken", $("input[name=csrfmiddlewaretoken]").val());
+                for(let i=0;i<datas.length;i++){
+                  data.append(datas[i],$(datas[i]).val())
                 }
-            })
-          }
-          function del(url,id) {
+                $.ajax({
+                    method: "POST",
+                    url: url,
+                    processData: false,
+                    contentType: false,
+                    mimeType: "multipart/form-data",
+                    data: data,
+                    success: function(data) {
+                        if (data.status == "Upload Done") {
+                            console.log("Uploading Done successfully")
+                        }
+                        else{
+                            console.log('error')
+                        }
+                    }
+                })
+              }
+      function del(url,id) {
                     $.ajax({
                         method: "POST",
                         url: url,
