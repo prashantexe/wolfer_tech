@@ -547,10 +547,6 @@ def angelInvestor (request):
 def home(request):
     return render(request,"index.html")
 
-def MentorClinic (request):
-    return render(request,"mentorclinic.html")
-
-
 
 def MentorConnect (request):
     return render(request,"mentorconnect.html",{'mentor':MentorConnectDB.objects.all()[::-1]})
@@ -569,7 +565,7 @@ def MontorConnect_save(request):
 
 
 def MentorClinic (request):
-    return render(request,"mentorclinic.html")
+    return render(request,"mentorclinic.html",{'mentor':MentorClinicDB.objects.all()[::-1]})
 
 def Mentor_Clinic_edit(request):
     return render(request,"edtior/Mentor_Clinic_edit.html",{'mentor':MentorClinicDB.objects.all()[::-1]})
@@ -1164,7 +1160,7 @@ def Start_UpTNimg2_save(request):
 def CentralGovernmentFunding (request):
     data = CentralGovernmentFundingDB.objects.all()[::-1]
     print(data)
-    return render(request,"newventures.html",{'mentor':data,'sample':'hi'})
+    return render(request,"central_govt_fund.html",{'mentor':data,'sample':'hi'})
 
 def CentralGovernmentFunding_edit(request):
     return render(request,"edtior/CentralGovernmentFunding_edit.html",{'mentor':CentralGovernmentFundingDB.objects.all()[::-1]})
