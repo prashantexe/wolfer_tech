@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import (Gallery,Team,logo,Carrer,blog,Testimonials,Events,HowWeWork,Birac,Tbi,DemoDayTOPSECTION,DemoDayPic,CentralGovernmentFundingDB,
-                    fishieries,EDI_TOPSECTION,SamridthFund,Start_UpTN,StateGovtFund,OurStartup,Investors,AboutHeading,MBADB,Govt_Tie,LastContent,UploadImage,GlobalMarket,GlobalMarketPic,stateGovtFunddb,
-                    EDI_Overview_Section,MeitY_SAMRIDH,Start_UpTNContent2,StateGovtFundSecondSection,International_Partners,Sisfs,WhoAreWe,Contact_SECTION,HOME_TESTIMONIAL,EventsForm,Facilities_developed,About_SISFS,
+                    ContactEditPage,fishieries,EDI_TOPSECTION,SamridthFund,Start_UpTN,StateGovtFund,OurStartup,Investors,AboutHeading,MBADB,Govt_Tie,LastContent,UploadImage,GlobalMarket,GlobalMarketPic,stateGovtFunddb,
+                    FooterEditPage,SocialMediaLinks,EDI_Overview_Section,MeitY_SAMRIDH,Start_UpTNContent2,StateGovtFundSecondSection,International_Partners,Sisfs,WhoAreWe,Contact_SECTION,HOME_TESTIMONIAL,EventsForm,Facilities_developed,About_SISFS,
                     EDI_InnovationVoucher,EDI_WeAimAtSection,EDI_Eligibility_Section,BundledServices,Start_UpTNimg1,Start_UpTNimg2,StateGovtFundEligibilitySection,MentorConnectDB,MentorClinicDB, angelInvestorDB, new_venturesDB,TOPSECTION,WhatWeDo,OurProcess,SpendingSection,JoinOurCommunity)
 from .Tools import get_images,get_team,reguler_datas,get_blog,get_startup,get_DemoDayPic,freguler_datas
 import datetime
@@ -15,6 +15,8 @@ import os
 from django.http.response import HttpResponse
 # Create your views here.
 
+def admin_home(request):
+    return render(request,"Login.html",reguler_datas())
 
 def admin(request):
     item = get_images()
@@ -522,25 +524,6 @@ def delete_form(request):
     page = EventsForm.objects.get(id=bl_id)
     page.delete()
     return render(request,"home/view_blog.html",{'blog':page})
-
-def convert_excel(request):
-    wb = openpyxl.Workbook() 
-    sheet = wb.active 
-    data = EventsForm.objects.all()
-    title = ["updated_date","title","Name","Email","company","event","linkedin","website"]
-    for i,x in enumerate(title):
-        cell_obj = sheet.cell(row = 1, column = i+1)
-        cell_obj.value = x
-
-    for i,x in enumerate(data,2):
-        row_data = [x.updated_date,x.title,x.Name,x.Email,x.company,x.event,x.linkedin,x.website]
-        for j,y in enumerate(row_data):
-            cell_obj = sheet.cell(row = i+1, column = j+1)
-            cell_obj.value = y
-            print(i,j)
-    wb.save("sample5.xlsx") 
-    return render(request,"home/view_blog.html")
-
 
 def EDI (request):
     return render(request,"fund/edi.html")
@@ -1340,3 +1323,98 @@ def download_file(request):
     response['Content-Disposition'] = "attachment; filename=%s" % filename
     # Return the response value
     return response
+
+
+def convert_excel(request):
+    wb = openpyxl.Workbook() 
+    sheet = wb.active 
+    data = EventsForm.objects.all()
+    title = ["updated_date","title","Name","Email","company","event","linkedin","website"]
+    for i,x in enumerate(title):
+        cell_obj = sheet.cell(row = 1, column = i+1)
+        cell_obj.value = x
+    filepath = "sample5.xlsx"
+    for i,x in enumerate(data,2):
+        row_data = [x.updated_date,x.title,x.Name,x.Email,x.company,x.event,x.linkedin,x.website]
+        for j,y in enumerate(row_data):
+            cell_obj = sheet.cell(row = i+1, column = j+1)
+            cell_obj.value = y
+            print(i,j)
+    wb.save(filepath) 
+    filename = 'Datas.xlsx'
+    path = open(filepath, 'rb')
+    mime_type, _ = mimetypes.guess_type(filepath)
+    response = HttpResponse(path, content_type=mime_type)
+    response['Content-Disposition'] = "attachment; filename=%s" % filename
+    return response
+
+def carrer_convert_excel(request):
+    wb = openpyxl.Workbook() 
+    sheet = wb.active 
+    data = Carrer.objects.all()
+    title = ["updated_date","Name","Email","Message","Subject","qualififcation","experience"]
+    for i,x in enumerate(title):
+        cell_obj = sheet.cell(row = 1, column = i+1)
+        cell_obj.value = x
+    filepath = "sample5.xlsx"
+    for i,x in enumerate(data,2):
+        row_data = [x.updated_date,x.Name,x.Email,x.Message,x.Subject,x.qualififcation,x.experience]
+        for j,y in enumerate(row_data):
+            cell_obj = sheet.cell(row = i+1, column = j+1)
+            cell_obj.value = y
+            print(i,j)
+    wb.save(filepath) 
+    filename = 'Datas.xlsx'
+    path = open(filepath, 'rb')
+    mime_type, _ = mimetypes.guess_type(filepath)
+    response = HttpResponse(path, content_type=mime_type)
+    response['Content-Disposition'] = "attachment; filename=%s" % filename
+    return response
+
+    
+def contact(request):
+    return render(request,"contact.html",{'ContactEditPage':ContactEditPage.objects.all()[::-1]})
+
+
+def contact_edit(request):
+    return render(request,"pages/contact_edit.html",{'ContactEditPage':ContactEditPage.objects.all()[::-1]})
+
+def ContactEditPage_save(request):
+    TextonImage = request.POST.get("#Text_on_Image")
+    SubHeading = request.POST.get("#Sub_Heading")
+    Address = request.POST.get("#Address")
+    PhoneNumber = request.POST.get("#Phone_Number")
+    mail = request.POST.get("#EmailId")
+
+    obj = ContactEditPage(TextonImage=TextonImage,SubHeading=SubHeading,Address=Address,PhoneNumber=PhoneNumber,mail=mail)
+    obj.save()
+    return render(request,"pages/contact_edit.html")
+
+
+
+def footer_edit(request):
+    return render(request,"footer_edit.html",reguler_datas({'FooterEditPage':FooterEditPage.objects.all()[::-1],'SocialMediaLinks':SocialMediaLinks.objects.all()[::-1]}))
+
+
+def FooterEditPage_save(request):
+    InstituteName = request.POST.get("#Institute_Name")
+    Address = request.POST.get("#Address")
+    PhoneNumber = request.POST.get("#Phone_Number")
+    EXN = request.POST.get("#EXN")
+    mail = request.POST.get("#EmailId")
+
+    obj = FooterEditPage(InstituteName=InstituteName,Address=Address,PhoneNumber=PhoneNumber,EXN=EXN,mail=mail)
+    obj.save()
+
+    return render(request,"footer_edit.html",reguler_datas())
+
+
+def SocialMediaLinks_save(request):
+    Twitter = request.POST.get("#Twitter_link")
+    Facebook = request.POST.get("#Facebook_Link")
+    Instagram = request.POST.get("#Instagram_Link2")
+    LinkedIn = request.POST.get("#LinkedIn_Link")
+    obj = SocialMediaLinks(Twitter=Twitter,Facebook=Facebook,Instagram=Instagram,LinkedIn=LinkedIn)
+    obj.save()
+    return render(request,"footer_edit.html",reguler_datas())
+

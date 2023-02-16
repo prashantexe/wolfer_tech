@@ -570,3 +570,30 @@ class fishieries(models.Model):
     last_updated_date = models.DateField(default=timezone.now())
     class Meta:
           get_latest_by = ['image']
+
+class ContactEditPage(models.Model):
+    id = models.IntegerField(primary_key=True)
+    TextonImage = models.CharField(max_length = 200)
+    SubHeading = models.CharField(max_length = 200)
+    Address = models.CharField(max_length = 200)
+    PhoneNumber = models.CharField(max_length = 200)
+    mail = models.CharField(max_length = 200)
+    last_updated_date = models.DateField(default=timezone.now())
+
+
+class FooterEditPage(models.Model):
+    id = models.IntegerField(primary_key=True)
+    InstituteName = models.CharField(max_length = 200)
+    Address = models.CharField(max_length = 200)
+    PhoneNumber = models.CharField(max_length = 200)
+    EXN = models.CharField(max_length = 200)
+    mail = models.CharField(max_length = 200)
+    last_updated_date = models.DateField(default=timezone.now())
+
+class SocialMediaLinks(models.Model):
+    id = models.IntegerField(primary_key=True)
+    Twitter = models.CharField(max_length = 200)
+    Facebook = models.CharField(max_length = 200)
+    Instagram = models.CharField(max_length = 200)
+    LinkedIn = models.CharField(max_length = 200)
+    last_updated_date = models.DateField(default=timezone.now())

@@ -26,6 +26,8 @@ urlpatterns = [
     path('', views.home),
     path('admin',views.admin),
 
+    path('admin_home',views.admin_home),
+
     path('upload_image',views.upload_image),
     path('delete_image',views.delete_image),
     
@@ -57,7 +59,10 @@ urlpatterns = [
     path('eventform',views.eventform),
     path('update_eventform',views.update_eventform),
     path('delete_form',views.delete_form),
+
+
     path('convert_excel',views.convert_excel),
+    path('carrer_convert_excel',views.carrer_convert_excel), # >>>>>>>>>>>>>>>>>>>>>>>> Download Files >>>>>>>>>>>>>>>>>>>>
     
     
     path('list_blog',views.list_blog),
@@ -206,6 +211,16 @@ urlpatterns = [
     path('upload_fishieries',views.upload_fishieries),
     path('delete_fishieries',views.delete_fishieries),
     path('set_fishieries',views.set_fishieries),
+
+    path('contact_edit',views.contact_edit),
+    path('ContactEditPage_save',views.ContactEditPage_save),
+    path('contact',views.contact),
+
+    path('footer_edit',views.footer_edit),
+    path('FooterEditPage_save',views.FooterEditPage_save),
+    path('SocialMediaLinks_save',views.SocialMediaLinks_save),
+
+
 
 ]
 if settings.DEBUG:
