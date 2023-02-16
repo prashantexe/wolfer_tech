@@ -533,7 +533,7 @@ def angelInvestor (request):
     return render(request,"angelinvestor.html")
 
 def home(request):
-    return render(request,"index.html")
+    return render(request,"index.html",reguler_datas())
 
 
 def MentorConnect (request):

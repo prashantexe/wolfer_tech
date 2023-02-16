@@ -1,4 +1,4 @@
-from .models import Gallery,Team,logo,blog, MentorConnectDB,OurStartup,DemoDayPic,fishieries
+from .models import Gallery,Team,logo,blog, MentorConnectDB,OurStartup,DemoDayPic,fishieries,FooterEditPage,SocialMediaLinks
 import random
 def get_vals(request,data):
     datas = []
@@ -42,13 +42,13 @@ def reguler_datas(data=False):
         logo_ = logo.objects.all()
         last_logo = logo.objects.latest("L_id")
         if data:
-            out = {'logo':last_logo,'logo_collection':logo_[::-1]}
+            out = {'logo':last_logo,'logo_collection':logo_[::-1],}
             out = dict(out,**data)
         else:
             out = {'logo':last_logo,'logo_collection':logo_[::-1]}
     except:
         print("Erorr are occers in Tools -> reguler_datas function {may be the db is empty we can't load the icons so you can see this message}")
-    return out
+    return dict(out,**{'FooterEditPage':FooterEditPage.objects.all()[::-1],'SocialMediaLinks':SocialMediaLinks.objects.all()[::-1]})
 
 def freguler_datas(data=False):
     out = dict()
