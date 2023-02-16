@@ -201,6 +201,12 @@ urlpatterns = [
     path("EDI_WeAimAtSection_save",views.EDI_WeAimAtSection_save),
     path("EDI_Eligibility_Section_save",views.EDI_Eligibility_Section_save),
 
+    path('fishieriespage',views.fishieriespage),
+    path('fishieries',views.update_fishieries),
+    path('upload_fishieries',views.upload_fishieries),
+    path('delete_fishieries',views.delete_fishieries),
+    path('set_fishieries',views.set_fishieries),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,

@@ -1,13 +1,18 @@
 from django.shortcuts import render
 from .models import (Gallery,Team,logo,Carrer,blog,Testimonials,Events,HowWeWork,Birac,Tbi,DemoDayTOPSECTION,DemoDayPic,CentralGovernmentFundingDB,
-                    EDI_TOPSECTION,SamridthFund,Start_UpTN,StateGovtFund,OurStartup,Investors,AboutHeading,MBADB,Govt_Tie,LastContent,UploadImage,GlobalMarket,GlobalMarketPic,stateGovtFunddb,
+                    fishieries,EDI_TOPSECTION,SamridthFund,Start_UpTN,StateGovtFund,OurStartup,Investors,AboutHeading,MBADB,Govt_Tie,LastContent,UploadImage,GlobalMarket,GlobalMarketPic,stateGovtFunddb,
                     EDI_Overview_Section,MeitY_SAMRIDH,Start_UpTNContent2,StateGovtFundSecondSection,International_Partners,Sisfs,WhoAreWe,Contact_SECTION,HOME_TESTIMONIAL,EventsForm,Facilities_developed,About_SISFS,
                     EDI_InnovationVoucher,EDI_WeAimAtSection,EDI_Eligibility_Section,BundledServices,Start_UpTNimg1,Start_UpTNimg2,StateGovtFundEligibilitySection,MentorConnectDB,MentorClinicDB, angelInvestorDB, new_venturesDB,TOPSECTION,WhatWeDo,OurProcess,SpendingSection,JoinOurCommunity)
-from .Tools import get_images,get_team,reguler_datas,get_blog,get_startup,get_DemoDayPic
+from .Tools import get_images,get_team,reguler_datas,get_blog,get_startup,get_DemoDayPic,freguler_datas
 import datetime
 import json
 import openpyxl
-
+# Import mimetypes module
+import mimetypes
+# import os module
+import os
+# Import HttpResponse module
+from django.http.response import HttpResponse
 # Create your views here.
 
 
@@ -1282,3 +1287,56 @@ def EDI_Eligibility_Section_save(request):
     return render(request,"pages/samridth_edit.html")
 
 
+#............................................................
+#...............fishieries.........................................
+def fishieriespage(request):
+    return render(request,"fisheries.html",freguler_datas())
+
+def update_fishieries(request):
+    return render(request,"home/fishieries.html",freguler_datas(reguler_datas()))
+
+def upload_fishieries(request):
+    Reson = request.POST.get("#reson")
+    image = request.FILES["#fileInput-single"]
+    update = fishieries(image=image,Reson=Reson)
+    update.save()
+    return render(request,"home/fishieries.html")
+
+def delete_fishieries(request):
+    id = request.POST.get("id")
+    size = len(fishieries.objects.all())
+    if size > 1:
+        image = fishieries.objects.get(L_id=id)
+        image.delete()
+    else:
+        pass
+    return render(request,"home/fishieries.html")
+
+def set_fishieries(request):
+    id = request.POST.get("id")
+    image = fishieries.objects.get(L_id=id)
+    image_ = image.image
+    reson = image.Reson
+    image.delete()
+    obj = fishieries(image=image_,Reson=reson)
+    obj.save()
+    return render(request,"home/fishieries.html")
+#............................................................
+#...............fishieries.........................................
+def download_file(request):
+    # Define Django project base directory
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    # Define text file name
+    filename = 'test.txt'
+    # Define the full file path
+    filepath = BASE_DIR + '/downloadapp/Files/' + filename
+    # Open the file for reading content
+    path = open(filepath, 'r')
+    # Set the mime type
+    mime_type, _ = mimetypes.guess_type(filepath)
+    # Set the return value of the HttpResponse
+    response = HttpResponse(path, content_type=mime_type)
+    # Set the HTTP header for sending to browser
+    response['Content-Disposition'] = "attachment; filename=%s" % filename
+    # Return the response value
+    return response

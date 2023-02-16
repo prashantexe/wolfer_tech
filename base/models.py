@@ -563,3 +563,10 @@ class EDI_Eligibility_Section(models.Model):
     point_3 = models.CharField(max_length = 200)
     last_updated_date = models.DateField(default=timezone.now())
 
+class fishieries(models.Model):
+    L_id = models.IntegerField(primary_key=True)
+    Reson = models.CharField(max_length = 200)
+    image = models.ImageField(upload_to='logo',default='images/user_image.png')
+    last_updated_date = models.DateField(default=timezone.now())
+    class Meta:
+          get_latest_by = ['image']
