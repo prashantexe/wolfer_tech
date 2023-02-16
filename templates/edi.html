@@ -434,28 +434,24 @@
     <!-- /.offcanvas -->
   </header>
     <div class="container py-14 py-md-10 text-center mt-10 pt-6">
-        <h2 class="display-4 mb-3">EDII - IVP</h2>
+        <h2 class="display-4 mb-3">{{ EDI_TOPSECTION.0.Heading }}</h2>
         
         </div>
         
         <div class="mx-10">
-            <p class="lead fs-lg">Entrepreneurship Development and Innovation Institute (EDII) - Innovation Voucher Programme (IVP)</p>
-            <p class="mb-6">The Entrepreneurship Development and Innovation Institute (EDII), Chennai is an apex organisation in the field of entrepreneurship education and self-employment promotion in the state of Tamil Nadu.
+            <p class="lead fs-lg">{{ EDI_TOPSECTION.0.Sub_Heading }}</p>
+            <p class="mb-6">{{ EDI_TOPSECTION.0.content }}
 
                 </p>    
 
                 <h6>Overview</h6>
               <ul>
-                <li>Established in 2001</li>
+                <li>{{ EDI_Overview_Section.0.point_1 }}</li>
                 <li>
-                  EDII was constituted by Government of Tamil Nadu as a not-for- profit
-                  society and is administered by Department of Micro, Small and Medium
-                  Enterprises (MSME).
+                    {{ EDI_Overview_Section.0.point_2 }}
                 </li>
                 <li>
-                  It is headed by the Director of the Institute, EDII is managed under
-                  the superintendence of a Governing Council One of the most prominent
-                  programmes offered under EDII is the Innovation Voucher Programme.
+                    {{ EDI_Overview_Section.0.point_3 }}
                 </li>
               </ul>
 
@@ -468,7 +464,7 @@
           <figure>
             <img
               class="w-auto"
-              src=" {% static 'assets/img/illustrations/i7.png' %} "
+              src=" {{ EDI_TOPSECTION.0.image.url }} "
               srcse {% static 't="./ass' %} ets/img/illustrations/i7@2x.png 2x"
               alt=""
             />
@@ -476,19 +472,17 @@
         </div>
         <!--/column -->
         <div class="col-lg-7">
-          <h3 class="display-4 mb-5">Innovation Voucher Programme (IVP)</h3>
+          <h3 class="display-4 mb-5">{{ EDI_InnovationVoucher.0.heading }}</h3>
           <p class="mb-6">
-            Innovation Voucher Programme is the Tamil Nadu Government’s flagship
-            grant-in-aid scheme for supporting Start-ups and MSMEs.
+            {{ EDI_InnovationVoucher.0.Sub_Heading }}
           </p>
           <h2 class="display-9 mb-3">We aim at:</h2>
           <ul>
             <li>
-              Promoting Research and Innovation amongst Start-ups and MSMEs.
+                {{ EDI_WeAimAtSection.0.point_1 }}
             </li>
             <li>
-              Companies working at innovative research can avail grant up to
-              Rs.5 lakhs
+                {{ EDI_WeAimAtSection.0.point_2 }}
             </li>
           </ul>
 
@@ -500,14 +494,13 @@
         <div class="row mt-7">
             <h2 class="display-9 mb-3">Eligibility Criteria</h2>
             <p class="mb-8">
-              Innovation Voucher Programme is the Tamil Nadu Government’s flagship
-              grant-in-aid scheme for supporting Start-ups and MSMEs.
+                {{ EDI_Eligibility_Section.0.Sub_Heading }}
             </p>
             <ul class="mx-5">
-              <li>Should be a manufacturing MSME/STARTUP.</li>
-              <li>Be registered and located in Tamil Nadu.</li>
+              <li>{{ EDI_Eligibility_Section.0.point_1 }}</li>
+              <li>{{ EDI_Eligibility_Section.0.point_2 }}</li>
               <li>
-                Willing to co-finance the innovation investment as per IVP norms.
+                {{ EDI_Eligibility_Section.0.point_3 }}
               </li>
             </ul>
             
