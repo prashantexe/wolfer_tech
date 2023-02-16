@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from .models import (Gallery,Team,logo,Carrer,blog,Testimonials,Events,HowWeWork,Birac,Tbi,DemoDayTOPSECTION,DemoDayPic,CentralGovernmentFundingDB,
-                    SamridthFund,Start_UpTN,StateGovtFund,OurStartup,Investors,AboutHeading,MBADB,Govt_Tie,LastContent,UploadImage,GlobalMarket,GlobalMarketPic,stateGovtFunddb,
-                    MeitY_SAMRIDH,Start_UpTNContent2,StateGovtFundSecondSection,International_Partners,Sisfs,WhoAreWe,Contact_SECTION,HOME_TESTIMONIAL,EventsForm,Facilities_developed,About_SISFS,
-                    BundledServices,Start_UpTNimg1,Start_UpTNimg2,StateGovtFundEligibilitySection,MentorConnectDB,MentorClinicDB, angelInvestorDB, new_venturesDB,TOPSECTION,WhatWeDo,OurProcess,SpendingSection,JoinOurCommunity)
+                    EDI_TOPSECTION,SamridthFund,Start_UpTN,StateGovtFund,OurStartup,Investors,AboutHeading,MBADB,Govt_Tie,LastContent,UploadImage,GlobalMarket,GlobalMarketPic,stateGovtFunddb,
+                    EDI_Overview_Section,MeitY_SAMRIDH,Start_UpTNContent2,StateGovtFundSecondSection,International_Partners,Sisfs,WhoAreWe,Contact_SECTION,HOME_TESTIMONIAL,EventsForm,Facilities_developed,About_SISFS,
+                    EDI_InnovationVoucher,EDI_WeAimAtSection,EDI_Eligibility_Section,BundledServices,Start_UpTNimg1,Start_UpTNimg2,StateGovtFundEligibilitySection,MentorConnectDB,MentorClinicDB, angelInvestorDB, new_venturesDB,TOPSECTION,WhatWeDo,OurProcess,SpendingSection,JoinOurCommunity)
 from .Tools import get_images,get_team,reguler_datas,get_blog,get_startup,get_DemoDayPic
 import datetime
 import json
@@ -653,6 +653,30 @@ def home_edit(request):
         print("maybe database are empty")
     return render(request,"pages/home_edit.html")
 
+def delete_upload(request):
+    bl_id = request.POST.get("id")
+    page = UploadImage.objects.get(id=bl_id)
+    page.delete()
+    return render(request,"home/view_blog.html",{'blog':page})
+
+def delete_investors(request):
+    bl_id = request.POST.get("id")
+    page = Investors.objects.get(id=bl_id)
+    page.delete()
+    return render(request,"home/view_blog.html",{'blog':page})
+
+def delete_Govt_Tie(request):
+    bl_id = request.POST.get("id")
+    page = Govt_Tie.objects.get(id=bl_id)
+    page.delete()
+    return render(request,"home/view_blog.html",{'blog':page})
+
+def delete_Internationalpartners(request):
+    bl_id = request.POST.get("id")
+    page = International_Partners.objects.get(id=bl_id)
+    page.delete()
+    return render(request,"home/view_blog.html",{'blog':page})
+
 
 def Whoweare(request):
     ids = ['#Sub-heading','#Point-1','#Point-2','#Point-3','#Point-4','#image_file']
@@ -750,7 +774,7 @@ def International(request):
     return render(request,"gallery.html")
 
 def GovtTie(request):
-    ids = ['#fileInput-single4','61']
+    ids = ['#fileInput-single4','#sub-heading1']
 
     heading = request.POST.get(ids[1])
     try :
@@ -1199,4 +1223,66 @@ def BundledServices_save (request):
     obj.save()
     
     return render(request,"pages/samridth_edit.html")
+
+def edi(request):
+    return render(request,"edi.html",{'EDI_TOPSECTION':EDI_TOPSECTION.objects.all()[::-1],'EDI_Overview_Section':EDI_Overview_Section.objects.all()[::-1],'EDI_InnovationVoucher':EDI_InnovationVoucher.objects.all()[::-1],'EDI_WeAimAtSection':EDI_WeAimAtSection.objects.all()[::-1],'EDI_Eligibility_Section':EDI_Eligibility_Section.objects.all()[::-1]})
+
+def edi_edit (request):
+    return render(request,"pages/edi_edit.html",{'EDI_TOPSECTION':EDI_TOPSECTION.objects.all()[::-1],'EDI_Overview_Section':EDI_Overview_Section.objects.all()[::-1],'EDI_InnovationVoucher':EDI_InnovationVoucher.objects.all()[::-1],'EDI_WeAimAtSection':EDI_WeAimAtSection.objects.all()[::-1],'EDI_Eligibility_Section':EDI_Eligibility_Section.objects.all()[::-1]})
+
+def EDI_TOPSECTION_save(request):
+    Heading = request.POST.get("#heading")
+    Sub_Heading = request.POST.get("#sub_heading")
+    content =   request.POST.get("#content")
+    image = request.POST.get("#heading_1")
+
+    try:
+        image = request.FILES['#fileInput-single']
+        obj = EDI_TOPSECTION(image=image,Heading=Heading,Sub_Heading=Sub_Heading,content=content)
+        obj.save()
+    except:
+        obj = EDI_TOPSECTION.objects.all()[::-1][0]
+        obj = EDI_TOPSECTION(image=obj.image,Heading=Heading,Sub_Heading=Sub_Heading,content=content)
+        obj.save()
+    return render(request,"pages/samridth_edit.html")
+
+def EDI_Overview_Section_save(request):
+    point_1 = request.POST.get("#point_1")
+    point_2 = request.POST.get("#point_2")
+    point_3 =   request.POST.get("#point_3")
+    
+    obj = EDI_Overview_Section(point_1=point_1,point_2=point_2,point_3=point_3)
+    obj.save()
+
+    for i in EDI_Eligibility_Section.objects.all():
+        print(i.point_1,i.point_2)
+    return render(request,"pages/samridth_edit.html")
+
+
+def EDI_InnovationVoucher_save(request):
+    heading = request.POST.get("#sub_heading")
+    Sub_Heading = request.POST.get("#para_1")
+
+    obj = EDI_InnovationVoucher(heading=heading,Sub_Heading=Sub_Heading)
+    obj.save()
+    return render(request,"pages/samridth_edit.html")
+
+def EDI_WeAimAtSection_save(request):
+    point_1 = request.POST.get("#point_1")
+    point_2 = request.POST.get("#point_2")
+
+    obj = EDI_WeAimAtSection(point_1=point_1,point_2=point_2)
+    obj.save()
+    return render(request,"pages/samridth_edit.html")
+
+def EDI_Eligibility_Section_save(request):
+    Sub_Heading = request.POST.get("#sub")
+    point_1 = request.POST.get("#point_1")
+    point_2 = request.POST.get("#point_2")
+    point_3 = request.POST.get("#point_3")
+
+    obj = EDI_Eligibility_Section(Sub_Heading=Sub_Heading,point_1=point_1,point_2=point_2,point_3=point_3)
+    obj.save()
+    return render(request,"pages/samridth_edit.html")
+
 

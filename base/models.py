@@ -526,3 +526,40 @@ class BundledServices (models.Model):
     Heading_3 = models.CharField(max_length = 200)
     Content_3 = models.CharField(max_length = 200)
     last_updated_date = models.DateField(default=timezone.now())
+
+
+class EDI_TOPSECTION(models.Model):
+    id = models.IntegerField(primary_key=True)
+    Heading = models.CharField(max_length = 200)
+    Sub_Heading = models.CharField(max_length = 200)
+    content = models.CharField(max_length = 200)
+    image = models.ImageField(upload_to='EDI_TOPSECTION/%Y/%m/%d',default='images/user_image.png')
+    last_updated_date = models.DateField(default=timezone.now())
+
+class EDI_Overview_Section(models.Model):
+    id = models.IntegerField(primary_key=True)
+    point_1 = models.CharField(max_length = 200)
+    point_2 = models.CharField(max_length = 200)
+    point_3 = models.CharField(max_length = 200)
+    last_updated_date = models.DateField(default=timezone.now())
+
+class EDI_InnovationVoucher(models.Model):
+    id = models.IntegerField(primary_key=True)
+    heading = models.CharField(max_length = 200)
+    Sub_Heading = models.CharField(max_length = 200)
+    last_updated_date = models.DateField(default=timezone.now())
+
+class EDI_WeAimAtSection(models.Model):
+    id = models.IntegerField(primary_key=True)
+    point_1 = models.CharField(max_length = 200)
+    point_2 = models.CharField(max_length = 200)
+    last_updated_date = models.DateField(default=timezone.now())
+
+class EDI_Eligibility_Section(models.Model):
+    id = models.IntegerField(primary_key=True)
+    Sub_Heading = models.CharField(max_length = 200)
+    point_1 = models.CharField(max_length = 200)
+    point_2 = models.CharField(max_length = 200)
+    point_3 = models.CharField(max_length = 200)
+    last_updated_date = models.DateField(default=timezone.now())
+

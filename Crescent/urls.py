@@ -141,6 +141,10 @@ urlpatterns = [
     path("International_Partners",views.International),
     path("Govt_Tie",views.GovtTie),
     path("upload_images",views.Upload_Image),
+    path("delete_upload",views.delete_upload),
+    path("delete_investors",views.delete_investors),
+    path("delete_Govt_Tie",views.delete_Govt_Tie),
+    path("delete_Internationalpartners",views.delete_Internationalpartners),
 
     path("HowWeWork_save",views.HowWeWork_save),
     path("Last_content_save",views.Last_content_save),
@@ -188,6 +192,14 @@ urlpatterns = [
     path("SamridthFund_save",views.SamridthFund_save),
     path("MeitY_SAMRIDH_save",views.MeitY_SAMRIDH_save),
     path("BundledServices_save",views.BundledServices_save),
+
+    path("edi",views.edi),
+    path("edi_edit",views.edi_edit),
+    path("EDI_TOPSECTION_save",views.EDI_TOPSECTION_save),
+    path("EDI_Overview_Section_save",views.EDI_Overview_Section_save),
+    path("EDI_InnovationVoucher_save",views.EDI_InnovationVoucher_save),
+    path("EDI_WeAimAtSection_save",views.EDI_WeAimAtSection_save),
+    path("EDI_Eligibility_Section_save",views.EDI_Eligibility_Section_save),
 
 ]
 if settings.DEBUG:
