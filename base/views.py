@@ -18,10 +18,15 @@ from django.contrib.auth import authenticate,login, logout
 from django.contrib.auth.decorators import login_required
 
 
-
 def admin_home(request):
     return render(request,"Login.html",reguler_datas())
 
+def logout_admin(request):
+    logout(request)
+    return render(request,"logout_temp.html",reguler_datas())
+
+def FourNotFout(request):
+    return render(request,"404_temp.html",reguler_datas())
 
 def admin_home_auth(request):
     ids = ['email','password']
@@ -35,8 +40,8 @@ def admin_home_auth(request):
     else:
         return redirect(admin_home)
 
-
-def admin(request):
+@login_required(login_url='/FourNotFout')
+def image_upload_page_gallery(request):
     item = get_images()
     return render(request,"pages/empty.html",reguler_datas({"categories":item[0],"images":item[1]}))
 
