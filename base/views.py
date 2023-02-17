@@ -71,6 +71,7 @@ def aboutus(request):
 
 
 # upload team ...............................
+@login_required(login_url='/FourNotFout')
 def admin_team(request):
     return render(request,'pages/team.html',reguler_datas({"team":get_team()}))
 
@@ -148,6 +149,7 @@ def update_carrer(request):
 #............................................................
 
 #...............Blog........................................
+@login_required(login_url='/FourNotFout')
 def blog_edit(request):
     return render(request,"pages/blog_edit.html")
 
@@ -203,7 +205,7 @@ def delete_blog(request):
     page.delete()
     return render(request,"home/view_blog.html",reguler_datas({'blog':page}))
 
-
+@login_required(login_url='/FourNotFout')
 def list_edit_blog(request):
     items = get_blog()
     return render(request,"home/edit_blog_list.html",reguler_datas({'blogs':items}))
@@ -221,6 +223,7 @@ def events(request):
     obj = Events.objects.all()
     return render(request,"about_us/Events.html",reguler_datas({"card":obj}))
 
+@login_required(login_url='/FourNotFout')
 def events_edit(request):
     obj = Events.objects.all()
     return render(request,"pages/Events_edit.html",reguler_datas({"card":obj}))
@@ -250,6 +253,7 @@ def Testimonicals(request):
     obj = Testimonials.objects.all()
     return render(request,"about_us/Testimonicals.html",reguler_datas({"card":obj}))
 
+@login_required(login_url='/FourNotFout')
 def Testimonicals_edit(request):
     obj = Testimonials.objects.all()
     return render(request,"pages/Testimonicals_edit.html",reguler_datas({"card":obj}))
@@ -281,6 +285,7 @@ def birac(request):
 
     return render(request,"about_us/birac.html",reguler_datas({'birac':obj,'view':topic,'Facilities_developed':Facilities_developed.objects.all()}))
 
+@login_required(login_url='/FourNotFout')
 def birac_edit(request):
     obj = Birac.objects.all()[::-1]
     item = []
@@ -389,6 +394,7 @@ def tbi(request):
 
     return render(request,"about_us/tbi.html",reguler_datas({'birac':obj,"topic":topic}))
 
+@login_required(login_url='/FourNotFout')
 def tbi_edit(request):
     obj = Tbi.objects.all()
     item = []
@@ -456,6 +462,7 @@ def sisfs(request):
 
     return render(request,"sisfs.html",reguler_datas({'birac':obj,"topic":re_view,'data':Sisfs.objects.latest('id'),'abt':About_SISFS.objects.all()}))
 
+@login_required(login_url='/FourNotFout')
 def sisfs_edit(request):
     obj = Sisfs.objects.all()[::-1]
     item = []
@@ -522,6 +529,7 @@ def set_sisfs(request):
 def eventform(request):
     return render(request,"about_us/event_form.html",reguler_datas())
 
+@login_required(login_url='/FourNotFout')
 def edit_eventform(request):
     obj = EventsForm.objects.all()
     return render(request,"pages/eventform_edit.html",reguler_datas({'obj':obj}))
@@ -555,9 +563,11 @@ def EDI (request):
 def angelInvestor (request):
     return render(request,"angelinvestor.html",reguler_datas())
 
+
 def MentorConnect (request):
     return render(request,"mentorconnect.html",reguler_datas({'mentor':MentorConnectDB.objects.all()[::-1]}))
 
+@login_required(login_url='/FourNotFout')
 def MontorConnect_edit(request):
     return render(request,"edtior/mentor_connect_edit.html",reguler_datas({'mentor':MentorConnectDB.objects.all()[::-1]}))
 
@@ -574,6 +584,7 @@ def MontorConnect_save(request):
 def MentorClinic (request):
     return render(request,"mentorclinic.html",reguler_datas({'mentor':MentorClinicDB.objects.all()[::-1]}))
 
+@login_required(login_url='/FourNotFout')
 def Mentor_Clinic_edit(request):
     return render(request,"edtior/Mentor_Clinic_edit.html",{'mentor':MentorClinicDB.objects.all()[::-1]})
 
@@ -588,6 +599,7 @@ def Mentor_Clinic_save(request):
 def angelInvestor (request):
     return render(request,"angelInvestor.html",reguler_datas({'mentor':angelInvestorDB.objects.all()[::-1]}))
 
+@login_required(login_url='/FourNotFout')
 def angelInvestor_edit(request):
     return render(request,"edtior/angelInvestor_edit.html",{'mentor':angelInvestorDB.objects.all()[::-1]})
 
@@ -605,6 +617,7 @@ def new_ventures (request):
     print(data)
     return render(request,"newventures.html",reguler_datas({'mentor':data,'sample':'hi'}))
 
+@login_required(login_url='/FourNotFout')
 def new_ventures_edit(request):
     return render(request,"edtior/new_ventures_edit.html",{'mentor':new_venturesDB.objects.all()[::-1]})
 
@@ -639,7 +652,7 @@ def home(request):
         print("maybe database are empty")
     return render(request,"pages/home_edit.html",reguler_datas())
 
-
+@login_required(login_url='/FourNotFout')
 def home_edit(request):
     try :
         whoweare = WhoAreWe.objects.all()[::-1]
@@ -819,6 +832,7 @@ def Upload_Image(request):
 def MBA (request):
     return render(request,"mba.html",{'mentor':MBADB.objects.all()[::-1]})
 
+@login_required(login_url='/FourNotFout')
 def MBA_edit(request):
     return render(request,"edtior/MBA_edit.html",{'mentor':MBADB.objects.all()[::-1]})
 
@@ -832,6 +846,7 @@ def MBA_save(request):
 def ourStartups (request):
     return render(request,"ourstartup.html",reguler_datas({'startup':get_startup()}))
 
+@login_required(login_url='/FourNotFout')
 def ourStartups_edit (request):
     return render(request,"pages/ourstartup_edit.html",reguler_datas({'startup':get_startup()}))
 
@@ -857,6 +872,7 @@ def delete_startup(request):
 def about (request):
     return render(request,"a/thiruabout.html",reguler_datas({'about_heading':AboutHeading.objects.all()[::-1],'HowWeWork':HowWeWork.objects.all()[::-1],'last_con':LastContent.objects.all()[::-1]}))
 
+@login_required(login_url='/FourNotFout')
 def about_edit (request):
     return render(request,"pages/about_edit.html",reguler_datas({'about_heading':AboutHeading.objects.all()[::-1],'HowWeWork':HowWeWork.objects.all()[::-1],'last_con':LastContent.objects.all()[::-1]}))
 
@@ -917,6 +933,7 @@ def About_heading_save (request):
 def Global_Market (request):
     return render(request,"globalmarket.html",reguler_datas({'pics':GlobalMarketPic.objects.all()[::-1],'title':GlobalMarket.objects.all()[::-1]}))
 
+@login_required(login_url='/FourNotFout')
 def GlobalMarket_edit (request):
     return render(request,"pages/global_market_edit.html",reguler_datas({'pics':GlobalMarketPic.objects.all()[::-1],'title':GlobalMarket.objects.all()[::-1]}))
 
@@ -959,6 +976,7 @@ def set_GlobalMarketPic(request):
 def service (request):
     return render(request,"service.html",reguler_datas({'JoinOurCommunity':JoinOurCommunity.objects.all()[::-1],'SpendingSection':SpendingSection.objects.all()[::-1],'OurProcess':OurProcess.objects.all()[::-1],'top':TOPSECTION.objects.all()[::-1],'WhatWeDo':WhatWeDo.objects.all()[::-1]}))
 
+@login_required(login_url='/FourNotFout')
 def service_edit (request):
     return render(request,"pages/service_edit.html",reguler_datas({'JoinOurCommunity':JoinOurCommunity.objects.all()[::-1],'SpendingSection':SpendingSection.objects.all()[::-1],'OurProcess':OurProcess.objects.all()[::-1],'top':TOPSECTION.objects.all()[::-1],'WhatWeDo':WhatWeDo.objects.all()[::-1]}))
 
@@ -1036,6 +1054,7 @@ def Join_Our_Community_save(request):
 def demoday(request):
     return render(request,"demoday.html",reguler_datas({'DemoDayPic':get_DemoDayPic(),'DemoDayTOPSECTION':DemoDayTOPSECTION.objects.all()[::-1]}))
 
+@login_required(login_url='/FourNotFout')
 def demoday_edit(request):
     return render(request,"pages/demoday.html",reguler_datas({'DemoDayPic':get_DemoDayPic(),'DemoDayTOPSECTION':DemoDayTOPSECTION.objects.all()[::-1]}))
 
@@ -1077,6 +1096,7 @@ def set_DemoDayPic(request):
 def stategovtfunds (request):
     return render(request,"stategovtfund.html",reguler_datas({'StateGovtFund':StateGovtFund.objects.all()[::-1],'StateGovtFundSecondSection':StateGovtFundSecondSection.objects.all()[::-1],'StateGovtFundEligibilitySection':StateGovtFundEligibilitySection.objects.all()[::-1]}))
 
+@login_required(login_url='/FourNotFout')
 def stategovtfunds_edit (request):
     return render(request,"pages/state_govt_fund_edit.html",reguler_datas({'StateGovtFund':StateGovtFund.objects.all()[::-1],'StateGovtFundSecondSection':StateGovtFundSecondSection.objects.all()[::-1],'StateGovtFundEligibilitySection':StateGovtFundEligibilitySection.objects.all()[::-1]}))
 
@@ -1132,6 +1152,7 @@ def StateGovtFundEligibilitySection_save(request):
 def startuptn (request):
     return render(request,"startupTN.html",reguler_datas({'Start_UpTN':Start_UpTN.objects.all()[::-1],'Start_UpTNContent2':Start_UpTNContent2.objects.all()[::-1],'Start_UpTNimg1':Start_UpTNimg1.objects.all()[::-1],'Start_UpTNimg2':Start_UpTNimg2.objects.all()[::-1]}))
 
+@login_required(login_url='/FourNotFout')
 def startuptn_edit (request):
     return render(request,"pages/startupTN_edit.html",reguler_datas({'Start_UpTN':Start_UpTN.objects.all()[::-1],'Start_UpTNContent2':Start_UpTNContent2.objects.all()[::-1],'Start_UpTNimg1':Start_UpTNimg1.objects.all()[::-1],'Start_UpTNimg2':Start_UpTNimg2.objects.all()[::-1]}))
 
@@ -1169,6 +1190,7 @@ def CentralGovernmentFunding (request):
     print(data)
     return render(request,"central_govt_fund.html",reguler_datas({'mentor':data,'sample':'hi'}))
 
+@login_required(login_url='/FourNotFout')
 def CentralGovernmentFunding_edit(request):
     return render(request,"edtior/CentralGovernmentFunding_edit.html",reguler_datas({'mentor':CentralGovernmentFundingDB.objects.all()[::-1]}))
 
@@ -1184,6 +1206,7 @@ def CentralGovernmentFunding_save(request):
 def samridth (request):
     return render(request,"samridth.html",reguler_datas({'SamridthFund':SamridthFund.objects.all()[::-1],'MeitY_SAMRIDH':MeitY_SAMRIDH.objects.all()[::-1],'BundledServices':BundledServices.objects.all()[::-1]}))
 
+@login_required(login_url='/FourNotFout')
 def samridth_edit (request):
     return render(request,"pages/samridth_edit.html",reguler_datas({'SamridthFund':SamridthFund.objects.all()[::-1],'MeitY_SAMRIDH':MeitY_SAMRIDH.objects.all()[::-1],'BundledServices':BundledServices.objects.all()[::-1]}))
 
@@ -1230,6 +1253,7 @@ def BundledServices_save (request):
 def edi(request):
     return render(request,"edi.html",{'EDI_TOPSECTION':EDI_TOPSECTION.objects.all()[::-1],'EDI_Overview_Section':EDI_Overview_Section.objects.all()[::-1],'EDI_InnovationVoucher':EDI_InnovationVoucher.objects.all()[::-1],'EDI_WeAimAtSection':EDI_WeAimAtSection.objects.all()[::-1],'EDI_Eligibility_Section':EDI_Eligibility_Section.objects.all()[::-1]})
 
+@login_required(login_url='/FourNotFout')
 def edi_edit (request):
     return render(request,"pages/edi_edit.html",reguler_datas({'EDI_TOPSECTION':EDI_TOPSECTION.objects.all()[::-1],'EDI_Overview_Section':EDI_Overview_Section.objects.all()[::-1],'EDI_InnovationVoucher':EDI_InnovationVoucher.objects.all()[::-1],'EDI_WeAimAtSection':EDI_WeAimAtSection.objects.all()[::-1],'EDI_Eligibility_Section':EDI_Eligibility_Section.objects.all()[::-1]}))
 
@@ -1394,7 +1418,7 @@ def carrer_convert_excel(request):
 def contact(request):
     return render(request,"contact.html",reguler_datas({'ContactEditPage':ContactEditPage.objects.all()[::-1]}))
 
-
+@login_required(login_url='/FourNotFout')
 def contact_edit(request):
     return render(request,"pages/contact_edit.html",reguler_datas({'ContactEditPage':ContactEditPage.objects.all()[::-1]}))
 
@@ -1410,7 +1434,7 @@ def ContactEditPage_save(request):
     return render(request,"pages/contact_edit.html")
 
 
-
+@login_required(login_url='/FourNotFout')
 def footer_edit(request):
     return render(request,"footer_edit.html",reguler_datas({'FooterEditPage':FooterEditPage.objects.all()[::-1],'SocialMediaLinks':SocialMediaLinks.objects.all()[::-1]}))
 
