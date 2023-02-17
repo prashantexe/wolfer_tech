@@ -587,16 +587,14 @@
             <div class="row gy-6 gy-lg-0">
               <div class="col-lg-4">
                 <div class="widget">
-                  <h3 class="h2 mb-1 text-white">TBI Innovation and Incubation Council</h3>
+                  <h3 class="h2 mb-1 text-white">{{ FooterEditPage.0.InstituteName }}</h3>
                   <p class="lead mb-5">
-                       TBI Institute of Science and Technology,
-                    GST Road, Chennai - 600048,
-                    Tamil Nadu, India
+                    {{ FooterEditPage.0.Address }}
                     
-                   <span style="display: block; margin-top: 10px;"> Ph.No : 044 - 22759200,</span>
-                   <span style="display: block; margin-top: 10px;"> EXN : 485 & 486 </span>
+                   <span style="display: block; margin-top: 10px;"> Ph.No : {{ FooterEditPage.0.PhoneNumber }},</span>
+                   <span style="display: block; margin-top: 10px;"> EXN : {{ FooterEditPage.0.EXN }} </span>
                     
-                   <span style="display: block; margin-top: 10px;">    Mail Id : info.ciic@TBI.education</span>
+                   <span style="display: block; margin-top: 10px;">    Mail Id : {{ FooterEditPage.0.mail }}</span>
                   </p>
                   
                 </div>
@@ -664,11 +662,11 @@
             <div class="widget">
               <h4 class="widget-title text-white mb-3">Follow Us</h4>
               <nav class="nav social social-white">
-                <a href="#"><iconify-icon icon="ri:twitter-line"></iconify-icon></a>
-                <a href="#"><iconify-icon icon="uil:facebook"></iconify-icon></a>
+                <a href="{{ SocialMediaLinks.0.Twitter }}"><iconify-icon icon="ri:twitter-line"></iconify-icon></a>
+                <a href="{{ SocialMediaLinks.0.Facebook }}"><iconify-icon icon="uil:facebook"></iconify-icon></a>
               
-               <a> <iconify-icon icon="ph:instagram-logo-light"></iconify-icon> </a>
-                <a href="#"><iconify-icon icon="circum:youtube"></iconify-icon></a>
+                <a href="{{ SocialMediaLinks.0.Instagram }}"><iconify-icon icon="logos:instagram-icon"></iconify-icon></a>
+                <a href="{{ SocialMediaLinks.0.LinkedIn }}"><iconify-icon icon="circum:linkedin"></iconify-icon></a>
               </nav>
               <!-- /.social -->
             </div>

@@ -24,10 +24,12 @@ urlpatterns = [
     
     path('admin/', admin.site.urls),
     path('', views.home),
-    path('admin',views.admin),
+    path('image_upload_page_gallery',views.image_upload_page_gallery),
 
     path('admin_home',views.admin_home),
     path('admin_home_auth',views.admin_home_auth),
+    path('logout_admin',views.logout_admin),
+    path('FourNotFout',views.FourNotFout),
 
     path('upload_image',views.upload_image),
     path('delete_image',views.delete_image),

@@ -38,7 +38,7 @@
         >
         <div class="container flex-lg-row flex-nowrap align-items-center">
           <div class="navbar-brand w-100">
-            <a href="#">
+            <a href="/">
               <img class="logo-dark" src="{% static 'icon-dummy.png' %}" srcset="{% static 'icon-dummy.png' %} 6x" alt="" />
               <img class="logo-light" src="{% static 'icon-dummy.png' %}" srcset="{% static 'icon-dummy.png' %} 6x" alt="" />
             </a>
@@ -54,7 +54,7 @@
                 <li class="nav-item dropdown dropdown-mega">
                   <a
                     class="nav-link  "
-                    href="#"
+                    href="/"
                     
                     >Home</a
                   >
@@ -516,109 +516,107 @@
       
 
           <!-- FOOTER STARTS -->
-    <section id="snippet-3" class="wrapper bg-light wrapper-border">
-        <div class="container-fluid pt-0 pt-md-0 pb-0 pb-md-0 px-xxl-01" style="padding-left: 0px; padding-right: 0px;">
-          <footer class="bg-dark text-inverse">
-            <div class="container pt-13 pt-md-15 pb-7">
-              <div class="row gy-6 gy-lg-0">
-                <div class="col-lg-4">
-                  <div class="widget">
-                    <h3 class="h2 mb-1 text-white">TBI Innovation and Incubation Council</h3>
-                    <p class="lead mb-5">
-                         TBI Institute of Science and Technology,
-                      GST Road, Chennai - 600048,
-                      Tamil Nadu, India
-                      
-                     <span style="display: block; margin-top: 10px;"> Ph.No : 044 - 22759200,</span>
-                     <span style="display: block; margin-top: 10px;"> EXN : 485 & 486 </span>
-                      
-                     <span style="display: block; margin-top: 10px;">    Mail Id : info.ciic@TBI.education</span>
-                    </p>
-                    
-                  </div>
-                  <!-- /.widget -->
-                </div>
-                <!-- /column -->
-                <div class="col-md-4 col-lg-2 offset-lg-2">
-                  <div class="widget">
-                    <h4 class="widget-title text-white mb-3">Quick Links</h4>
-                    <ul class="list-unstyled text-reset mb-0">
-                      <li><a href="#">Team</a></li>
-                      <li><a href="#">Policy</a></li>
-                      <li><a href="#">Events & Awards</a></li>
-                      <li><a href="#">Our Startup</a></li>
-                      <li><a href="#">Gallery</a></li>
-                      <li><a href="#">Career</a></li>
-                    </ul>
-                  </div>
-                  <!-- /.widget -->
-                </div>
-                <!-- /column -->
-                <div class="col-md-4 col-lg-2">
-                  <div class="widget">
-                    <h4 class="widget-title text-white mb-3">Government Funding</h4>
-                    <ul class="list-unstyled mb-0">
-                      <li><a href="#">BIRAC - Bionest</a></li>
-                      <li><a href="#">SISFS</a></li>
-                      <li><a href="#">EDII-IVP</a></li>
-                   
-                    </ul>
-                  </div>
-                  <!-- /.widget -->
-                </div>
-                <div class="col-md-4 col-lg-2">
-                  <div class="widget">
-                    <h4 class="widget-title text-white mb-3">Mentor Connect</h4>
-                    <ul class="list-unstyled mb-0">
-                      <li><a href="#">Business Mentors</a></li>
-                      <li><a href="#">Financial Mentors</a></li>
-                      <li><a href="#">Life Sciences Mentors</a></li>
-                      <li><a href="#">Technical Mentors</a></li>
-            
-                    </ul>
-                  </div>
-                  <div class="widget">
-                      <h4 class="widget-title text-white mb-3">Market Connect</h4>
-                      <ul class="list-unstyled mb-0">
-                        <li><a href="#">Global Market Connect</a></li>
-                        <li><a href="#">Launch Pad</a></li>
-                        <li><a href="#">Demo Day
-                      </a></li>
-                        <li><a href="#">Startup Tools</a></li>
-              
-                      </ul>
+          <section id="snippet-3" class="wrapper bg-light wrapper-border">
+            <div class="container-fluid pt-0 pt-md-0 pb-0 pb-md-0 px-xxl-01" style="padding-left: 0px; padding-right: 0px;">
+              <footer class="bg-dark text-inverse">
+                <div class="container pt-13 pt-md-15 pb-7">
+                  <div class="row gy-6 gy-lg-0">
+                    <div class="col-lg-4">
+                      <div class="widget">
+                        <h3 class="h2 mb-1 text-white">{{ FooterEditPage.0.InstituteName }}</h3>
+                        <p class="lead mb-5">
+                          {{ FooterEditPage.0.Address }}
+                          
+                         <span style="display: block; margin-top: 10px;"> Ph.No : {{ FooterEditPage.0.PhoneNumber }},</span>
+                         <span style="display: block; margin-top: 10px;"> EXN : {{ FooterEditPage.0.EXN }} </span>
+                          
+                         <span style="display: block; margin-top: 10px;">    Mail Id : {{ FooterEditPage.0.mail }}</span>
+                        </p>
+                        
+                      </div>
+                      <!-- /.widget -->
                     </div>
-                  <!-- /.widget -->
-                </div>
-      
-                <!-- /column -->
-               
-                <!-- /column -->
-              </div>
-              <!--/.row -->
-              <hr class="mt-13 mt-md-15 mb-7" />
-              <div class="widget">
-                <h4 class="widget-title text-white mb-3">Follow Us</h4>
-                <nav class="nav social social-white">
-                  <a href="#"><iconify-icon icon="ri:twitter-line"></iconify-icon></a>
-                  <a href="#"><iconify-icon icon="uil:facebook"></iconify-icon></a>
+                    <!-- /column -->
+                    <div class="col-md-4 col-lg-2 offset-lg-2">
+                      <div class="widget">
+                        <h4 class="widget-title text-white mb-3">Quick Links</h4>
+                        <ul class="list-unstyled text-reset mb-0">
+                          <li><a href="/team">Team</a></li>
+                          <li><a href="#">Policy</a></li>
+                         
+                          <li><a href="/ourstartups">Our Startup</a></li>
+                          <li><a href="/gallery">Gallery</a></li>
+                          <li><a href="/career">Career</a></li>
+                        </ul>
+                      </div>
+                      <!-- /.widget -->
+                    </div>
+                    <!-- /column -->
+                    <div class="col-md-4 col-lg-2">
+                      <div class="widget">
+                        <h4 class="widget-title text-white mb-3">Government Funding</h4>
+                        <ul class="list-unstyled mb-0">
+                          <li><a href="/birac">BIRAC - Bionest</a></li>
+                          <li><a href="/sisfs">SISFS</a></li>
+                          <li><a href="/EDI">EDII-IVP</a></li>
+                       
+                        </ul>
+                      </div>
+                      <!-- /.widget -->
+                    </div>
+                    <div class="col-md-4 col-lg-2">
+                      <div class="widget">
+                        <h4 class="widget-title text-white mb-3">Mentor Connect</h4>
+                        <ul class="list-unstyled mb-0">
+                          <li><a href="/Mentor_Connect">Business Mentors</a></li>
+                          <li><a href="/Mentor_Connect">Financial Mentors</a></li>
+                          <li><a href="/Mentor_Connect">Life Sciences Mentors</a></li>
+                          <li><a href="/Mentor_Connect">Technical Mentors</a></li>
                 
-                 <a> <iconify-icon icon="ph:instagram-logo-light"></iconify-icon> </a>
-                  <a href="#"><iconify-icon icon="circum:youtube"></iconify-icon></a>
-                </nav>
-                <!-- /.social -->
-              </div>
-              <!-- /div -->
+                        </ul>
+                      </div>
+                      <div class="widget">
+                          <h4 class="widget-title text-white mb-3">Market Connect</h4>
+                          <ul class="list-unstyled mb-0">
+                            <li><a href="/globalMarket">Global Market Connect</a></li>
+                            <li><a href="#">Launch Pad</a></li>
+                            <li><a href="/demoday">Demo Day
+                          </a></li>
+                            <li><a href="#">Startup Tools</a></li>
+                  
+                          </ul>
+                        </div>
+                      <!-- /.widget -->
+                    </div>
+          
+                    <!-- /column -->
+                   
+                    <!-- /column -->
+                  </div>
+                  <!--/.row -->
+                  <hr class="mt-13 mt-md-15 mb-7" />
+                  <div class="widget">
+                    <h4 class="widget-title text-white mb-3">Follow Us</h4>
+                    <nav class="nav social social-white">
+                      <a href="{{ SocialMediaLinks.0.Twitter }}"><iconify-icon icon="ri:twitter-line"></iconify-icon></a>
+                      <a href="{{ SocialMediaLinks.0.Facebook }}"><iconify-icon icon="uil:facebook"></iconify-icon></a>
+                    
+                      <a href="{{ SocialMediaLinks.0.Instagram }}"><iconify-icon icon="ph:instagram-logo" style="color: white;"></iconify-icon></a>
+                      <a href="{{ SocialMediaLinks.0.LinkedIn }}"><iconify-icon icon="circum:linkedin"></iconify-icon></a>
+                    </nav>
+                    <!-- /.social -->
+                  </div>
+                  <!-- /div -->
+                </div>
+                <!-- /.container -->
+              </footer>
             </div>
             <!-- /.container -->
-          </footer>
-        </div>
-        <!-- /.container -->
-      
-          <!--/.card -->
-        </div>
-        <!-- /.container -->
-      </section>
+          
+              <!--/.card -->
+            </div>
+            <!-- /.container -->
+          </section>
       <!-- <div class="progress-wrap">
         <svg
           class="progress-circle svg-content"
