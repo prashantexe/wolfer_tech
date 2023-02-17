@@ -35,7 +35,7 @@ def admin_home_auth(request):
     else:
         return redirect(admin_home)
 
-@login_required()
+
 def admin(request):
     item = get_images()
     return render(request,"pages/empty.html",reguler_datas({"categories":item[0],"images":item[1]}))
@@ -123,7 +123,7 @@ def set_logo(request):
 #...............Logo.........................................
 
 def carrer(request):
-    return render(request,"about_us/carrer.html")
+    return render(request,"about_us/carrer.html",reguler_datas())
 def update_carrer(request):
     ids=['#name','#Qualification','#Experience','#Email','#Subject','#Message']
     Name = request.POST.get(ids[0])
@@ -185,27 +185,27 @@ def save_edit_blog(request,pk):
 
 def list_blog(request):
     items = get_blog()
-    return render(request,"home/blog.html",{'blogs':items})
+    return render(request,"home/blog.html",reguler_datas({'blogs':items}))
 
 def view_blog(request,pk):
     page = blog.objects.get(id=pk)
     items = get_blog()
-    return render(request,"home/view_blog.html",{'blog':page,'item':items})
+    return render(request,"home/view_blog.html",reguler_datas({'blog':page,'item':items}))
 
 def delete_blog(request):
     bl_id = request.GET.get("id")
     page = blog.objects.get(id=bl_id)
     page.delete()
-    return render(request,"home/view_blog.html",{'blog':page})
+    return render(request,"home/view_blog.html",reguler_datas({'blog':page}))
 
 
 def list_edit_blog(request):
     items = get_blog()
-    return render(request,"home/edit_blog_list.html",{'blogs':items})
+    return render(request,"home/edit_blog_list.html",reguler_datas({'blogs':items}))
 
 def edit_blog(request,pk):
     obj = blog.objects.get(id=pk)
-    return render(request,"pages/blog_re_edit.html",{'obj':obj})
+    return render(request,"pages/blog_re_edit.html",reguler_datas({'obj':obj}))
 
 
 #............................................................
@@ -260,7 +260,7 @@ def Testimonicals_save(request):
     vals = Testimonials(Name=Name,position=position,image=image,description=description,categories=categories)
     vals.save()
 
-    return render(request,"pages/Testimonicals_edit.html")
+    return render(request,"pages/Testimonicals_edit.html",reguler_datas())
 
 #............................................................
 
@@ -319,7 +319,7 @@ def delete_birac(request):
     bl_id = request.GET.get("id")
     page = Birac.objects.get(id=bl_id)
     page.delete()
-    return render(request,"home/view_blog.html",{'blog':page})
+    return render(request,"home/view_blog.html",reguler_datas({'blog':page}))
 
 def set_birac(request):
     id_ = request.GET.get("id")
@@ -333,7 +333,7 @@ def set_birac(request):
     obj = Birac(title=title,subtitle=subtitle,description=description,overview=overview,image=images)
     obj.save()
     print("saved")
-    return render(request,"home/logo.html")
+    return render(request,"home/logo.html",reguler_datas())
 
 
 def facilities_developed_save(request):
@@ -343,26 +343,26 @@ def facilities_developed_save(request):
     
     obj = Facilities_developed(topic=Heading,content=Content)
     obj.save()
-    return render(request,"home/logo.html")
+    return render(request,"home/logo.html",reguler_datas())
 
 def delete_facilities_developed(request):
     bl_id = request.GET.get("id")
     page = Facilities_developed.objects.get(FD_id=bl_id)
     page.delete()
-    return render(request,"home/view_blog.html",{'blog':page})
+    return render(request,"home/view_blog.html",reguler_datas({'blog':page}))
 
 def SISFS_scheme_save(request):
     ids = ['#Content']
     Content = request.POST.get(ids[0])
     obj = About_SISFS(topic=Content)
     obj.save()
-    return render(request,"home/logo.html")
+    return render(request,"home/logo.html",reguler_datas())
 
 def delete_SISFS_scheme(request):
     bl_id = request.GET.get("id")
     page = About_SISFS.objects.get(FD_id=bl_id)
     page.delete()
-    return render(request,"home/view_blog.html",{'blog':page})
+    return render(request,"home/view_blog.html",reguler_datas({'blog':page}))
 
 #............................................................
 
@@ -515,11 +515,11 @@ def set_sisfs(request):
 
 
 def eventform(request):
-    return render(request,"about_us/event_form.html")
+    return render(request,"about_us/event_form.html",reguler_datas())
 
 def edit_eventform(request):
     obj = EventsForm.objects.all()
-    return render(request,"pages/eventform_edit.html",{'obj':obj})
+    return render(request,"pages/eventform_edit.html",reguler_datas({'obj':obj}))
 
 def update_eventform(request):
     title = request.POST.get('#title')
@@ -535,7 +535,7 @@ def update_eventform(request):
     ob=EventsForm.objects.all()
     for i in ob:
         print(i.Name)
-    return render(request,"about_us/carrer.html")
+    return render(request,"about_us/carrer.html",reguler_datas())
 
 def delete_form(request):
     bl_id = request.GET.get("id")
@@ -544,17 +544,17 @@ def delete_form(request):
     return render(request,"home/view_blog.html",{'blog':page})
 
 def EDI (request):
-    return render(request,"fund/edi.html")
+    return render(request,"fund/edi.html",reguler_datas())
 
 
 def angelInvestor (request):
-    return render(request,"angelinvestor.html")
+    return render(request,"angelinvestor.html",reguler_datas())
 
 def MentorConnect (request):
-    return render(request,"mentorconnect.html",{'mentor':MentorConnectDB.objects.all()[::-1]})
+    return render(request,"mentorconnect.html",reguler_datas({'mentor':MentorConnectDB.objects.all()[::-1]}))
 
 def MontorConnect_edit(request):
-    return render(request,"edtior/mentor_connect_edit.html",{'mentor':MentorConnectDB.objects.all()[::-1]})
+    return render(request,"edtior/mentor_connect_edit.html",reguler_datas({'mentor':MentorConnectDB.objects.all()[::-1]}))
 
 def MontorConnect_save(request):
     content = request.POST.get('#content')
@@ -567,7 +567,7 @@ def MontorConnect_save(request):
 
 
 def MentorClinic (request):
-    return render(request,"mentorclinic.html",{'mentor':MentorClinicDB.objects.all()[::-1]})
+    return render(request,"mentorclinic.html",reguler_datas({'mentor':MentorClinicDB.objects.all()[::-1]}))
 
 def Mentor_Clinic_edit(request):
     return render(request,"edtior/Mentor_Clinic_edit.html",{'mentor':MentorClinicDB.objects.all()[::-1]})
@@ -581,7 +581,7 @@ def Mentor_Clinic_save(request):
 
 
 def angelInvestor (request):
-    return render(request,"angelInvestor.html",{'mentor':angelInvestorDB.objects.all()[::-1]})
+    return render(request,"angelInvestor.html",reguler_datas({'mentor':angelInvestorDB.objects.all()[::-1]}))
 
 def angelInvestor_edit(request):
     return render(request,"edtior/angelInvestor_edit.html",{'mentor':angelInvestorDB.objects.all()[::-1]})
@@ -598,7 +598,7 @@ def angelInvestor_save(request):
 def new_ventures (request):
     data = new_venturesDB.objects.all()[::-1]
     print(data)
-    return render(request,"newventures.html",{'mentor':data,'sample':'hi'})
+    return render(request,"newventures.html",reguler_datas({'mentor':data,'sample':'hi'}))
 
 def new_ventures_edit(request):
     return render(request,"edtior/new_ventures_edit.html",{'mentor':new_venturesDB.objects.all()[::-1]})
@@ -613,10 +613,10 @@ def new_ventures_save(request):
     return render(request,"edtior/new_ventures_edit.html")
 
 def testimonial (request):
-    return render(request,"testimonials.html")
+    return render(request,"testimonials.html",reguler_datas())
 
 def career (request):
-    return render(request,"carrer.html")
+    return render(request,"carrer.html",reguler_datas())
 
 def home(request):
     try :
@@ -632,7 +632,7 @@ def home(request):
         return render(request,"index.html",reguler_datas({'whoweare':whoweare,'ht':home_TESTIMONIAL,'cs':contact_Section,'investors':investors,'ip':Internationalpartners,'govt':govt,'Uploadimage':Uploadimage}))
     except:
         print("maybe database are empty")
-    return render(request,"pages/home_edit.html")
+    return render(request,"pages/home_edit.html",reguler_datas())
 
 
 def home_edit(request):
@@ -646,10 +646,10 @@ def home_edit(request):
         Uploadimage = UploadImage.objects.all()[::-1]
 
 
-        return render(request,"pages/home_edit.html",{'whoweare':whoweare,'ht':home_TESTIMONIAL,'cs':contact_Section,'investors':investors,'ip':Internationalpartners,'govt':govt,'Uploadimage':Uploadimage})
+        return render(request,"pages/home_edit.html",reguler_datas({'whoweare':whoweare,'ht':home_TESTIMONIAL,'cs':contact_Section,'investors':investors,'ip':Internationalpartners,'govt':govt,'Uploadimage':Uploadimage}))
     except:
         print("maybe database are empty")
-    return render(request,"pages/home_edit.html")
+    return render(request,"pages/home_edit.html",reguler_datas())
 
 def delete_upload(request):
     bl_id = request.POST.get("id")
@@ -695,7 +695,7 @@ def Whoweare(request):
     for i in WhoAreWe.objects.all():
         print(i.SubHeading)
 
-    return render(request,"gallery.html")
+    return render(request,"gallery.html",reguler_datas())
 
 
 def  Home_TESTIMONIAL(request):
@@ -715,7 +715,7 @@ def  Home_TESTIMONIAL(request):
     for i in HOME_TESTIMONIAL.objects.all():
         print(i.Name)
 
-    return render(request,"gallery.html")
+    return render(request,"gallery.html",reguler_datas())
 
 def  Contact_Section(request):
     ids = ['#Title','#Address','#pno','#E-Mail']
@@ -822,13 +822,13 @@ def MBA_save(request):
     obj = MBADB(Content=content)
     obj.save()
     print("saved.....................................////////////////////////")
-    return render(request,"edtior/MBA_edit.html")
+    return render(request,"edtior/MBA_edit.html",reguler_datas())
 
 def ourStartups (request):
-    return render(request,"ourstartup.html",{'startup':get_startup()})
+    return render(request,"ourstartup.html",reguler_datas({'startup':get_startup()}))
 
 def ourStartups_edit (request):
-    return render(request,"pages/ourstartup_edit.html",{'startup':get_startup()})
+    return render(request,"pages/ourstartup_edit.html",reguler_datas({'startup':get_startup()}))
 
 def ourStartups_save (request):
     Sub_heading = request.POST.get('#Sub_heading')
@@ -846,14 +846,14 @@ def delete_startup(request):
     bl_id = request.POST.get("id")
     page = OurStartup.objects.get(id=bl_id)
     page.delete()
-    return render(request,"home/view_blog.html",{'blog':page})
+    return render(request,"home/view_blog.html",reguler_datas({'blog':page}))
 
 
 def about (request):
-    return render(request,"a/thiruabout.html",{'about_heading':AboutHeading.objects.all()[::-1],'HowWeWork':HowWeWork.objects.all()[::-1],'last_con':LastContent.objects.all()[::-1]})
+    return render(request,"a/thiruabout.html",reguler_datas({'about_heading':AboutHeading.objects.all()[::-1],'HowWeWork':HowWeWork.objects.all()[::-1],'last_con':LastContent.objects.all()[::-1]}))
 
 def about_edit (request):
-    return render(request,"pages/about_edit.html",{'about_heading':AboutHeading.objects.all()[::-1],'HowWeWork':HowWeWork.objects.all()[::-1],'last_con':LastContent.objects.all()[::-1]})
+    return render(request,"pages/about_edit.html",reguler_datas({'about_heading':AboutHeading.objects.all()[::-1],'HowWeWork':HowWeWork.objects.all()[::-1],'last_con':LastContent.objects.all()[::-1]}))
 
 
 def HowWeWork_save (request):
@@ -872,7 +872,7 @@ def HowWeWork_save (request):
         obj = HowWeWork(Sub_heading=Sub_heading,Point_1=Point_1,Point_2=Point_2,Point_4=Point_4,Point_3=Point_3,image=obj.image)
         obj.save()
 
-    return render(request,"pages/about_edit.html",{})
+    return render(request,"pages/about_edit.html",reguler_datas())
 
 
 def Last_content_save (request):
@@ -910,10 +910,10 @@ def About_heading_save (request):
 
 
 def Global_Market (request):
-    return render(request,"globalmarket.html",{'pics':GlobalMarketPic.objects.all()[::-1],'title':GlobalMarket.objects.all()[::-1]})
+    return render(request,"globalmarket.html",reguler_datas({'pics':GlobalMarketPic.objects.all()[::-1],'title':GlobalMarket.objects.all()[::-1]}))
 
 def GlobalMarket_edit (request):
-    return render(request,"pages/global_market_edit.html",{'pics':GlobalMarketPic.objects.all()[::-1],'title':GlobalMarket.objects.all()[::-1]})
+    return render(request,"pages/global_market_edit.html",reguler_datas({'pics':GlobalMarketPic.objects.all()[::-1],'title':GlobalMarket.objects.all()[::-1]}))
 
 def GlobalMarket_save (request):
     Heading = request.POST.get("#heading")
@@ -952,10 +952,10 @@ def set_GlobalMarketPic(request):
     return render(request,"home/logo.html")
 
 def service (request):
-    return render(request,"service.html",{'JoinOurCommunity':JoinOurCommunity.objects.all()[::-1],'SpendingSection':SpendingSection.objects.all()[::-1],'OurProcess':OurProcess.objects.all()[::-1],'top':TOPSECTION.objects.all()[::-1],'WhatWeDo':WhatWeDo.objects.all()[::-1]})
+    return render(request,"service.html",reguler_datas({'JoinOurCommunity':JoinOurCommunity.objects.all()[::-1],'SpendingSection':SpendingSection.objects.all()[::-1],'OurProcess':OurProcess.objects.all()[::-1],'top':TOPSECTION.objects.all()[::-1],'WhatWeDo':WhatWeDo.objects.all()[::-1]}))
 
 def service_edit (request):
-    return render(request,"pages/service_edit.html",{'JoinOurCommunity':JoinOurCommunity.objects.all()[::-1],'SpendingSection':SpendingSection.objects.all()[::-1],'OurProcess':OurProcess.objects.all()[::-1],'top':TOPSECTION.objects.all()[::-1],'WhatWeDo':WhatWeDo.objects.all()[::-1]})
+    return render(request,"pages/service_edit.html",reguler_datas({'JoinOurCommunity':JoinOurCommunity.objects.all()[::-1],'SpendingSection':SpendingSection.objects.all()[::-1],'OurProcess':OurProcess.objects.all()[::-1],'top':TOPSECTION.objects.all()[::-1],'WhatWeDo':WhatWeDo.objects.all()[::-1]}))
 
 def TopSection_save(request):
     Sub_Heading = request.POST.get("#sub_heading")
@@ -1029,10 +1029,10 @@ def Join_Our_Community_save(request):
     obj.save()
 
 def demoday(request):
-    return render(request,"demoday.html",{'DemoDayPic':get_DemoDayPic(),'DemoDayTOPSECTION':DemoDayTOPSECTION.objects.all()[::-1]})
+    return render(request,"demoday.html",reguler_datas({'DemoDayPic':get_DemoDayPic(),'DemoDayTOPSECTION':DemoDayTOPSECTION.objects.all()[::-1]}))
 
 def demoday_edit(request):
-    return render(request,"pages/demoday.html",{'DemoDayPic':get_DemoDayPic(),'DemoDayTOPSECTION':DemoDayTOPSECTION.objects.all()[::-1]})
+    return render(request,"pages/demoday.html",reguler_datas({'DemoDayPic':get_DemoDayPic(),'DemoDayTOPSECTION':DemoDayTOPSECTION.objects.all()[::-1]}))
 
 def DemoDayTOPSECTION_save(request):
     heading = request.POST.get("#heading")
@@ -1070,10 +1070,10 @@ def set_DemoDayPic(request):
 
 
 def stategovtfunds (request):
-    return render(request,"stategovtfund.html",{'StateGovtFund':StateGovtFund.objects.all()[::-1],'StateGovtFundSecondSection':StateGovtFundSecondSection.objects.all()[::-1],'StateGovtFundEligibilitySection':StateGovtFundEligibilitySection.objects.all()[::-1]})
+    return render(request,"stategovtfund.html",reguler_datas({'StateGovtFund':StateGovtFund.objects.all()[::-1],'StateGovtFundSecondSection':StateGovtFundSecondSection.objects.all()[::-1],'StateGovtFundEligibilitySection':StateGovtFundEligibilitySection.objects.all()[::-1]}))
 
 def stategovtfunds_edit (request):
-    return render(request,"pages/state_govt_fund_edit.html",{'StateGovtFund':StateGovtFund.objects.all()[::-1],'StateGovtFundSecondSection':StateGovtFundSecondSection.objects.all()[::-1],'StateGovtFundEligibilitySection':StateGovtFundEligibilitySection.objects.all()[::-1]})
+    return render(request,"pages/state_govt_fund_edit.html",reguler_datas({'StateGovtFund':StateGovtFund.objects.all()[::-1],'StateGovtFundSecondSection':StateGovtFundSecondSection.objects.all()[::-1],'StateGovtFundEligibilitySection':StateGovtFundEligibilitySection.objects.all()[::-1]}))
 
 def StateGovtFund_save(request):
     Main_Heading = request.POST.get("#Main_heading")
@@ -1125,10 +1125,10 @@ def StateGovtFundEligibilitySection_save(request):
 
 
 def startuptn (request):
-    return render(request,"startupTN.html",{'Start_UpTN':Start_UpTN.objects.all()[::-1],'Start_UpTNContent2':Start_UpTNContent2.objects.all()[::-1],'Start_UpTNimg1':Start_UpTNimg1.objects.all()[::-1],'Start_UpTNimg2':Start_UpTNimg2.objects.all()[::-1]})
+    return render(request,"startupTN.html",reguler_datas({'Start_UpTN':Start_UpTN.objects.all()[::-1],'Start_UpTNContent2':Start_UpTNContent2.objects.all()[::-1],'Start_UpTNimg1':Start_UpTNimg1.objects.all()[::-1],'Start_UpTNimg2':Start_UpTNimg2.objects.all()[::-1]}))
 
 def startuptn_edit (request):
-    return render(request,"pages/startupTN_edit.html",{'Start_UpTN':Start_UpTN.objects.all()[::-1],'Start_UpTNContent2':Start_UpTNContent2.objects.all()[::-1],'Start_UpTNimg1':Start_UpTNimg1.objects.all()[::-1],'Start_UpTNimg2':Start_UpTNimg2.objects.all()[::-1]})
+    return render(request,"pages/startupTN_edit.html",reguler_datas({'Start_UpTN':Start_UpTN.objects.all()[::-1],'Start_UpTNContent2':Start_UpTNContent2.objects.all()[::-1],'Start_UpTNimg1':Start_UpTNimg1.objects.all()[::-1],'Start_UpTNimg2':Start_UpTNimg2.objects.all()[::-1]}))
 
 def Start_UpTN_save(request):
     Heading = request.POST.get("#heading")
@@ -1162,10 +1162,10 @@ def Start_UpTNimg2_save(request):
 def CentralGovernmentFunding (request):
     data = CentralGovernmentFundingDB.objects.all()[::-1]
     print(data)
-    return render(request,"central_govt_fund.html",{'mentor':data,'sample':'hi'})
+    return render(request,"central_govt_fund.html",reguler_datas({'mentor':data,'sample':'hi'}))
 
 def CentralGovernmentFunding_edit(request):
-    return render(request,"edtior/CentralGovernmentFunding_edit.html",{'mentor':CentralGovernmentFundingDB.objects.all()[::-1]})
+    return render(request,"edtior/CentralGovernmentFunding_edit.html",reguler_datas({'mentor':CentralGovernmentFundingDB.objects.all()[::-1]}))
 
 def CentralGovernmentFunding_save(request):
     content = request.POST.get('#content')
@@ -1177,10 +1177,10 @@ def CentralGovernmentFunding_save(request):
     return render(request,"edtior/CentralGovernmentFunding_edit.html")
 
 def samridth (request):
-    return render(request,"samridth.html",{'SamridthFund':SamridthFund.objects.all()[::-1],'MeitY_SAMRIDH':MeitY_SAMRIDH.objects.all()[::-1],'BundledServices':BundledServices.objects.all()[::-1]})
+    return render(request,"samridth.html",reguler_datas({'SamridthFund':SamridthFund.objects.all()[::-1],'MeitY_SAMRIDH':MeitY_SAMRIDH.objects.all()[::-1],'BundledServices':BundledServices.objects.all()[::-1]}))
 
 def samridth_edit (request):
-    return render(request,"pages/samridth_edit.html",{'SamridthFund':SamridthFund.objects.all()[::-1],'MeitY_SAMRIDH':MeitY_SAMRIDH.objects.all()[::-1],'BundledServices':BundledServices.objects.all()[::-1]})
+    return render(request,"pages/samridth_edit.html",reguler_datas({'SamridthFund':SamridthFund.objects.all()[::-1],'MeitY_SAMRIDH':MeitY_SAMRIDH.objects.all()[::-1],'BundledServices':BundledServices.objects.all()[::-1]}))
 
 
 def SamridthFund_save (request):
@@ -1226,7 +1226,7 @@ def edi(request):
     return render(request,"edi.html",{'EDI_TOPSECTION':EDI_TOPSECTION.objects.all()[::-1],'EDI_Overview_Section':EDI_Overview_Section.objects.all()[::-1],'EDI_InnovationVoucher':EDI_InnovationVoucher.objects.all()[::-1],'EDI_WeAimAtSection':EDI_WeAimAtSection.objects.all()[::-1],'EDI_Eligibility_Section':EDI_Eligibility_Section.objects.all()[::-1]})
 
 def edi_edit (request):
-    return render(request,"pages/edi_edit.html",{'EDI_TOPSECTION':EDI_TOPSECTION.objects.all()[::-1],'EDI_Overview_Section':EDI_Overview_Section.objects.all()[::-1],'EDI_InnovationVoucher':EDI_InnovationVoucher.objects.all()[::-1],'EDI_WeAimAtSection':EDI_WeAimAtSection.objects.all()[::-1],'EDI_Eligibility_Section':EDI_Eligibility_Section.objects.all()[::-1]})
+    return render(request,"pages/edi_edit.html",reguler_datas({'EDI_TOPSECTION':EDI_TOPSECTION.objects.all()[::-1],'EDI_Overview_Section':EDI_Overview_Section.objects.all()[::-1],'EDI_InnovationVoucher':EDI_InnovationVoucher.objects.all()[::-1],'EDI_WeAimAtSection':EDI_WeAimAtSection.objects.all()[::-1],'EDI_Eligibility_Section':EDI_Eligibility_Section.objects.all()[::-1]}))
 
 def EDI_TOPSECTION_save(request):
     Heading = request.POST.get("#heading")
@@ -1387,11 +1387,11 @@ def carrer_convert_excel(request):
 
     
 def contact(request):
-    return render(request,"contact.html",{'ContactEditPage':ContactEditPage.objects.all()[::-1]})
+    return render(request,"contact.html",reguler_datas({'ContactEditPage':ContactEditPage.objects.all()[::-1]}))
 
 
 def contact_edit(request):
-    return render(request,"pages/contact_edit.html",{'ContactEditPage':ContactEditPage.objects.all()[::-1]})
+    return render(request,"pages/contact_edit.html",reguler_datas({'ContactEditPage':ContactEditPage.objects.all()[::-1]}))
 
 def ContactEditPage_save(request):
     TextonImage = request.POST.get("#Text_on_Image")
