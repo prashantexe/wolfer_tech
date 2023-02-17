@@ -36,8 +36,8 @@
           <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
             <div class="offcanvas-header d-lg-none">
               <h3 class="text-white fs-30 mb-0">TBI</h3>
-              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
-                aria-label="Close"></button>
+              <iconify-icon icon="ic:baseline-keyboard-arrow-left" class=" btn-close-white" data-bs-dismiss="offcanvas"
+              aria-label="Close" width="20" height="20"></iconify-icon>
             </div>
             <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
               <ul class="navbar-nav">
@@ -571,16 +571,8 @@
                   data-rellax-speed="1"
                   style="bottom: 2rem; right: -3rem"
                 ></div>
-                <video
-                  poster="assets/img/photos/movie.jpg"
-                  class="player"
-                  playsinline
-                  controls
-                  preload="none"
-                >
-                  <source src=" {% static 'assets/media/movie.mp4' %} " type="video/mp4" />
-                  <source src=" {% static 'assets/media/movie.html' %} " type="video/webm" />
-                </video>
+                <iframe width="100%" height="315" src="{{ OurProcess.0.video_link }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
               </div>
             </div>
             <!--/column -->

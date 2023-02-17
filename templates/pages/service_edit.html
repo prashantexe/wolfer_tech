@@ -379,8 +379,12 @@
                             <label for="exampleInputEmail1">retouch para</label>
                             <input type="text" class="form-control" placeholder="heading_1"  value="{{ OurProcess.0.retouch_para }}" id="heading_1" name="heading_1">
                           </div>   
+                         <div class="form-group">
+                            <label for="exampleInputEmail1">video link</label>
+                            <input type="text" class="form-control" placeholder="video_link"  value="{{ OurProcess.0.video_link }}" id="video_link" name="video_link">
+                          </div>   
                     
-                       <button id="btn" onclick="send_data('Our_Process_save',['#sub_heading','#para_1','#para_2','#heading_1'])" class="btn btn-primary mr-2">Submit</button>
+                       <button id="btn" onclick="send_data('Our_Process_save',['#sub_heading','#para_1','#para_2','#heading_1','#video_link'])" class="btn btn-primary mr-2">Submit</button>
                        <button class="btn btn-light">Cancel</button>
                      </form>
                    </div>

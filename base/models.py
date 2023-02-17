@@ -51,6 +51,7 @@ class Team(models.Model):
     position = models.CharField(max_length = 200)
     image = models.ImageField(upload_to='Team/%Y/%m/%d',default='images/user_image.png')
     categories = models.CharField(max_length = 200)
+    linkedin = models.CharField(max_length = 200)
     last_updated_date = models.DateField(default=timezone.now())
 
 
@@ -410,6 +411,7 @@ class OurProcess(models.Model):
     concept_para = models.CharField(max_length = 200)
     prepare_para = models.CharField(max_length = 200)
     retouch_para = models.CharField(max_length = 200)
+    video_link = models.CharField(max_length = 200)
     last_updated_date = models.DateField(default=timezone.now())
 
 class SpendingSection(models.Model):

@@ -25,7 +25,7 @@
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
-    <nav class="navbar col-lg-16 col-15 p-0 fixed-top d-flex flex-row">
+    <nav class="navbar col-lg-16 col-15 p-0 fixed-top d-flex flex-row"  >
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
         <a class="navbar-brand brand-logo mr-5" href="# "><img src=" {{ logo.image.url }} " class="mr-2" alt="logo"/></a>
         <a class="navbar-brand brand-logo-mini" href="# "><img src=" {{ logo.image.url }} " alt="logo"/></a>
@@ -240,6 +240,10 @@
                       <input type="text" class="form-control" placeholder="Category" id="Category" name="Category">
                     </div>
                     <div class="form-group">
+                      <label for="exampleInputEmail1">Linkedin Url</label>
+                      <input type="text" class="form-control" placeholder="linkedin" id="linkedin" name="linkedin">
+                    </div>
+                    <div class="form-group">
                       <label for="exampleInputPassword1">image</label>
                       <input type="file" id="fileInput-single" class="form-control drop-zoon__file-input" accept="image/*" name="image_file" >
                     </div>
@@ -269,7 +273,11 @@
                                         <a rel="noopener noreferrer" onclick="del('{{ j.Team_id }}')" aria-label="delete" class="p-2 rounded-md dark:text-gray-100 hover:dark:text-violet-400">
                                             <iconify-icon icon="material-symbols:delete-rounded" width="20" height="20"></iconify-icon>
                                         </a>
+                                        <a rel="noopener noreferrer" href="{{ j.linkedin }}" aria-label="delete" class="p-2 rounded-md dark:text-gray-100 hover:dark:text-violet-400">
+                                          <iconify-icon icon="openmoji:linkedin" width="20" height="20"></iconify-icon>
+                                      </a>
                                     </div>
+                            
                                 </div>
                             </div>
                         {% endfor %}
@@ -289,6 +297,7 @@
                 data.append("csrfmiddlewaretoken", $("input[name=csrfmiddlewaretoken]").val())
                 data.append("Category",$("#Category").val())
                 data.append("position",$("#position").val())
+                data.append("linkedin",$("#linkedin").val())
                 data.append("name",$("#name").val())
                 $.ajax({
                     method: "POST",

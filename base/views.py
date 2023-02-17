@@ -79,8 +79,9 @@ def update_team(request):
     name = request.POST.get("name")
     Category = request.POST.get("Category")
     position = request.POST.get("position")
+    linkedin = request.POST.get("linkedin")
     image = request.FILES["image_file"]
-    db_obj = Team(Name=name,categories=Category,image=image,position=position)
+    db_obj = Team(Name=name,categories=Category,image=image,linkedin=linkedin,position=position)
     db_obj.save()
     obj = Team.objects.all()
     for i in obj:
@@ -96,6 +97,7 @@ def delete_team(request):
 
 #............................................................
 #...............Logo.........................................
+@login_required(login_url='/FourNotFout')
 def update_logo(request):
     return render(request,"home/logo.html",reguler_datas())
 
@@ -1017,7 +1019,8 @@ def Our_Process_save(request):
     concept_para = request.POST.get("#para_1")
     prepare_para = request.POST.get("#para_2")
     retouch_para = request.POST.get("#heading_1")
-    obj = OurProcess(heading=heading,concept_para=concept_para,prepare_para=prepare_para,retouch_para=retouch_para)
+    video_link = request.POST.get("#video_link")
+    obj = OurProcess(heading=heading,concept_para=concept_para,prepare_para=prepare_para,retouch_para=retouch_para,video_link=video_link)
     obj.save()
 
     return render(request,"pages/service_edit.html")
