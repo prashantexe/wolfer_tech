@@ -19,10 +19,37 @@
   .swiper-button{
     visibility: hidden;
   }
+  #feedback{
+
+    width: auto;
+    position: fixed;
+    bottom: 25%;
+    z-index: 999;
+    left: -95px !important;
+    transform: rotate(270deg);
+    transition: .5s;
+  }
+  #feedback a {
+    text-align: center;
+    display: block;
+    background: #224adb;
+    width: auto;
+    padding: 8px 35px 8px 10px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: .5s;
+    position: relative;
+}
  </style>
 </head>
 <body>
+  <div id="feedback" style="display: flex; justify-content: center; align-items: center; margin: 0px; padding: 0px;">
+    <a href="https://www.ciic.ventures/wp-content/uploads/2022/02/113-CIIC-Startups-Compendium-compressed.pdf" target="_blank" ><span>Download Startups</span><iconify-icon style="margin-left: 10px;" icon="material-symbols:download" width="25" height="25"></iconify-icon></a>
+  </div>
   <div class="content-wrapper">
+    
     <header class="wrapper bg-soft-primary">
       <nav class="navbar navbar-expand-lg center-nav transparent position-absolute navbar-dark caret-none">
         <div class="container flex-lg-row flex-nowrap align-items-center">
@@ -35,8 +62,8 @@
           <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
             <div class="offcanvas-header d-lg-none">
               <h3 class="text-white fs-30 mb-0">TBI</h3>
-              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
-                aria-label="Close"></button>
+              <iconify-icon icon="ic:baseline-keyboard-arrow-left" class=" btn-close-white" data-bs-dismiss="offcanvas"
+              aria-label="Close" width="20" height="20"></iconify-icon>
             </div>
             <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
               <ul class="navbar-nav">
@@ -372,8 +399,9 @@
             </ul>
             <!-- /.navbar-nav -->
           </div>
-          <!-- /.navbar-other -->
         </div>
+          <!-- /.navbar-other -->
+      
         <!-- /.container -->
       </nav>
       <!-- /.navbar -->
@@ -934,14 +962,13 @@
             <nav class="nav social social-white">
               <a href="{{ SocialMediaLinks.0.Twitter }}"><iconify-icon icon="ri:twitter-line"></iconify-icon></a>
               <a href="{{ SocialMediaLinks.0.Facebook }}"><iconify-icon icon="uil:facebook"></iconify-icon></a>
-            
-<<<<<<< HEAD
+ 
               <a href="{{ SocialMediaLinks.0.Instagram }}"><iconify-icon icon="ph:instagram-logo" style="color: white;"></iconify-icon></a>
               <a href="{{ SocialMediaLinks.0.LinkedIn }}"><iconify-icon icon="circum:linkedin"></iconify-icon></a>
-=======
-              <a href="{{ SocialMediaLinks.0.Instagram }}"><iconify-icon icon="logos:instagram-icon"></iconify-icon></a>
-              <a href="{{ SocialMediaLinks.0.LinkedIn }}"><iconify-icon icon="circum:youtube"></iconify-icon></a>
->>>>>>> 8cc4122a1246ba2e3d48f400604422a66dc949fd
+
+              <!-- <a href="{{ SocialMediaLinks.0.Instagram }}"><iconify-icon icon="logos:instagram-icon"></iconify-icon></a>
+              <a href="{{ SocialMediaLinks.0.LinkedIn }}"><iconify-icon icon="circum:youtube"></iconify-icon></a> -->
+
             </nav>
             <!-- /.social -->
           </div>

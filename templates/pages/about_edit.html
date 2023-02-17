@@ -49,11 +49,20 @@
       <nav class="sidebar sidebar-offcanvas" style="width: 400px;" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href=" {% static 'index.html' %} ">
-              <i class="icon-grid menu-icon"></i>
-              <span class="menu-title pl-2 pt-2">Home</span>
+            <a class="nav-link" data-toggle="collapse" href="#homw" aria-expanded="false" aria-controls="ui-basic">
+              <iconify-icon icon="mdi:about" width="20" height="20"></iconify-icon>
+              <span class="menu-title">Home</span>
+              <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="homw">
+              <ul class="nav flex-column sub-menu " >
+                <li class="nav-item"> <a class="nav-link" href=" /home_edit">Home - page</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/logo ">Logo - edit</a></li>
+              
+              </ul>
+            </div>
           </li>
+          
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <iconify-icon icon="mdi:about" width="20" height="20"></iconify-icon>
