@@ -411,6 +411,7 @@ class OurProcess(models.Model):
     concept_para = models.CharField(max_length = 200)
     prepare_para = models.CharField(max_length = 200)
     retouch_para = models.CharField(max_length = 200)
+    video_link = models.CharField(max_length = 200)
     last_updated_date = models.DateField(default=timezone.now())
 
 class SpendingSection(models.Model):

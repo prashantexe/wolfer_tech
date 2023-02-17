@@ -1018,7 +1018,8 @@ def Our_Process_save(request):
     concept_para = request.POST.get("#para_1")
     prepare_para = request.POST.get("#para_2")
     retouch_para = request.POST.get("#heading_1")
-    obj = OurProcess(heading=heading,concept_para=concept_para,prepare_para=prepare_para,retouch_para=retouch_para)
+    video_link = request.POST.get("#video_link")
+    obj = OurProcess(heading=heading,concept_para=concept_para,prepare_para=prepare_para,retouch_para=retouch_para,video_link=video_link)
     obj.save()
 
     return render(request,"pages/service_edit.html")
