@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import (Gallery,Team,logo,Carrer,blog,Testimonials,Events,HowWeWork,Birac,Tbi,DemoDayTOPSECTION,DemoDayPic,CentralGovernmentFundingDB,
                     ContactEditPage,fishieries,EDI_TOPSECTION,SamridthFund,Start_UpTN,StateGovtFund,OurStartup,Investors,AboutHeading,MBADB,Govt_Tie,LastContent,UploadImage,GlobalMarket,GlobalMarketPic,stateGovtFunddb,
                     FooterEditPage,SocialMediaLinks,EDI_Overview_Section,MeitY_SAMRIDH,Start_UpTNContent2,StateGovtFundSecondSection,International_Partners,Sisfs,WhoAreWe,Contact_SECTION,HOME_TESTIMONIAL,EventsForm,Facilities_developed,About_SISFS,
@@ -14,9 +14,24 @@ import os
 # Import HttpResponse module
 from django.http.response import HttpResponse
 # Create your views here.
+from django.contrib.auth import authenticate
+
 
 def admin_home(request):
     return render(request,"Login.html",reguler_datas())
+
+def admin_home_auth(request):
+    ids = ['#email','#password']
+    user = request.POST.get(ids[0])
+    password = request.POST.get(ids[1])
+    print(user,password)
+    user = authenticate(username=user, password=password)
+    if user is not None:
+        redirect(admin_home)
+    else:
+        redirect(admin_home_auth)
+    return render(request,"Login.html",reguler_datas())
+
 
 def admin(request):
     item = get_images()
@@ -532,10 +547,6 @@ def EDI (request):
 def angelInvestor (request):
     return render(request,"angelinvestor.html")
 
-def home(request):
-    return render(request,"index.html",reguler_datas())
-
-
 def MentorConnect (request):
     return render(request,"mentorconnect.html",{'mentor':MentorConnectDB.objects.all()[::-1]})
 
@@ -615,7 +626,7 @@ def home(request):
 
         
         Internationalpartners = International_Partners.objects.all()[::-1]
-        return render(request,"index.html",{'whoweare':whoweare,'ht':home_TESTIMONIAL,'cs':contact_Section,'investors':investors,'ip':Internationalpartners,'govt':govt,'Uploadimage':Uploadimage})
+        return render(request,"index.html",reguler_datas({'whoweare':whoweare,'ht':home_TESTIMONIAL,'cs':contact_Section,'investors':investors,'ip':Internationalpartners,'govt':govt,'Uploadimage':Uploadimage}))
     except:
         print("maybe database are empty")
     return render(request,"pages/home_edit.html")

@@ -102,37 +102,41 @@
                 Or sign up with e-mail
               </div>
             </div>
-
-            <div class="mx-auto max-w-xs">
-              <input
-                class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                type="email"
-                placeholder="Email"
-              />
-              <input
-                class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-                type="password"
-                placeholder="Password"
-              />
-              <button
-                class="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
-              >
-                <svg
-                  class="w-6 h-6 -ml-2"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-                  <circle cx="8.5" cy="7" r="4" />
-                  <path d="M20 8v6M23 11h-6" />
-                </svg>
-                <span class="ml-3">
-                  Sign Up
-                </span>
-              </button>
+            <form action="" method="post">
+              {% csrf_token %}
+                <div class="mx-auto max-w-xs">
+                  <input
+                    class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                    type="text"
+                    id="email"
+                    placeholder="Email"
+                  />
+                  <input
+                    class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                  />
+                  <button onclick="send_data('admin_home_auth',['#email','#password'])"
+                    class="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                  >
+                    <svg
+                      class="w-6 h-6 -ml-2"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                      <circle cx="8.5" cy="7" r="4" />
+                      <path d="M20 8v6M23 11h-6" />
+                    </svg>
+                    <span class="ml-3">
+                      Login
+                    </span>
+                  </button>
+              </form>
               <p class="mt-6 text-xs text-gray-600 text-center">
                 I agree to abide by templatana's
                 <a href="#" class="border-b border-gray-500 border-dotted">
@@ -174,7 +178,74 @@
   </body>
 </html>
 <!-- partial -->
-  <script  src="./script.js"></script>
+
+  <script>
+           function img_upload(url,img,datas) {
+                console.log(datas,img)
+                var data = new FormData();
+                data.append(img, $(img)[0].files[0]);
+                data.append("csrfmiddlewaretoken", $("input[name=csrfmiddlewaretoken]").val());
+                for(let i=0;i<datas.length;i++){
+                  data.append(datas[i],$(datas[i]).val())
+                }
+                $.ajax({
+                    method: "POST",
+                    url: url,
+                    processData: false,
+                    contentType: false,
+                    mimeType: "multipart/form-data",
+                    data: data,
+                    success: function(data) {
+                        if (data.status == "Upload Done") {
+                            console.log("Uploading Done successfully")
+                        }
+                        else{
+                            console.log('error')
+                        }
+                    }
+                })
+              }
+      function del(url,id) {
+                    $.ajax({
+                        method: "POST",
+                        url: url,
+                        data: {
+                            'id': id,
+                            'csrfmiddlewaretoken': $("input[name=csrfmiddlewaretoken]").val()
+                        }, success: function (data) {
+                            location.reload();
+                        }
+                    }); 
+            }
+          function send_data(url,datas) {
+            
+            console.log(datas,url)
+            var data = new FormData();
+            data.append("csrfmiddlewaretoken", $("input[name=csrfmiddlewaretoken]").val());
+            for(let i=0;i<datas.length;i++){
+              data.append(datas[i],$(datas[i]).val())
+            }
+            $.ajax({
+                method: "POST",
+                url: url,
+                processData: false,
+                contentType: false,
+                mimeType: "multipart/form-data",
+                data: data,
+                success: function(data) {
+                    if (data.status == "Upload Done") {
+                        console.log("Uploading Done successfully")
+                    }
+                    else{
+                        console.log('error')
+                    }
+                }
+            })
+          }
+  </script>
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+   <script src="https://code.iconify.design/iconify-icon/1.0.3/iconify-icon.min.js"></script>
 
 </body>
 </html>
