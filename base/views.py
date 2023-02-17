@@ -23,7 +23,6 @@ def admin_home(request):
     return render(request,"Login.html",reguler_datas())
 
 
-
 def admin_home_auth(request):
     ids = ['email','password']
     user = request.POST.get(ids[0])
