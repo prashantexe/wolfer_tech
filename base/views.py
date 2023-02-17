@@ -79,8 +79,9 @@ def update_team(request):
     name = request.POST.get("name")
     Category = request.POST.get("Category")
     position = request.POST.get("position")
+    linkedin = request.POST.get("linkedin")
     image = request.FILES["image_file"]
-    db_obj = Team(Name=name,categories=Category,image=image,position=position)
+    db_obj = Team(Name=name,categories=Category,image=image,linkedin=linkedin,position=position)
     db_obj.save()
     obj = Team.objects.all()
     for i in obj:
@@ -96,6 +97,7 @@ def delete_team(request):
 
 #............................................................
 #...............Logo.........................................
+@login_required(login_url='/FourNotFout')
 def update_logo(request):
     return render(request,"home/logo.html",reguler_datas())
 
