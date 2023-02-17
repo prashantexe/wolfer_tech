@@ -22,10 +22,22 @@
         <link href= "https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     </head>
 
-    <body onload="load()">
-        <div class="container-scroller">
+    <body onload="load()"><div class="d-block fixed " style="margin-bottom: 40px;">
+      <nav class="navbar col-lg-16 col-15 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+          <a class="navbar-brand brand-logo mr-5" href=" {% static 'index.html' %} "><img src=" {{ logo.image.url }} " class="mr-2" alt="logo"/></a>
+          <a class="navbar-brand brand-logo-mini" href=" {% static 'index.html' %} "><img src=" {{ logo.image.url }} " alt="logo"/></a>
+        </div>
+        <div class="add-items d-flex px-3 mb-0">
+          <a href="/logout_admin">
+              <button type="submit" class="add btn btn-primary todo-list-add-btn" id="add-task">Logout</button>
+            </a></div>
+      </nav>
+    </div>
+        <div class="container-scroller d-flex " style="margin-top: 60px;">
             <!-- partial:partials/_navbar.html -->
             <nav class="sidebar sidebar-offcanvas" style="width: 400px;" id="sidebar">
+             
                 <ul class="nav">
                   <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#homw" aria-expanded="false" aria-controls="ui-basic">
@@ -182,8 +194,8 @@
                     </a>
                     <div class="collapse" id="error">
                       <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link" href="#"> Career Form </a></li>
-                        <li class="nav-item"> <a class="nav-link" href="# "> Events Form </a></li>
+                        <li class="nav-item"> <a class="nav-link" href="/carrer_convert_excel"> Career Form </a></li>
+                        <li class="nav-item"> <a class="nav-link" href=" /convert_excel "> Events Form </a></li>
                       </ul>
                     </div>
                   </li>
@@ -195,69 +207,69 @@
 
             <!-- partial -->
             <div class="main-panel">        
-                <div class="content-wrapper">
-                    <!-- component -->
-                    <div>
-                        <h1 style="font-weight: bold;font-size: 28px;">Write Your Blog Here</h1>
-                    </div>
-                    <div class="py-12">
-                        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                                <div class="p-6 bg-white border-b border-gray-200">
-                                    <form method="POST">
-                                            {% csrf_token %}
-                                        <div class="mb-4">
-                                            <label class="text-xl text-gray-600">Title <span class="text-red-500">*</span></label></br>
-                                            <input type="text" value="{{ obj.title }}" class="border-2 border-gray-300 p-2 w-full" name="title" id="title" value="" required>
-                                        </div>
+              <div class="content-wrapper">
+                  <!-- component -->
+                  <div>
+                      <h1 style="font-weight: bold;font-size: 28px;">Write Your Blog Here</h1>
+                  </div>
+                  <div class="py-12">
+                      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                          <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                              <div class="p-6 bg-white border-b border-gray-200">
+                                  <form method="POST">
+                                          {% csrf_token %}
+                                      <div class="mb-4">
+                                          <label class="text-xl text-gray-600">Title <span class="text-red-500">*</span></label></br>
+                                          <input type="text" value="{{ obj.title }}" class="border-2 border-gray-300 p-2 w-full" name="title" id="title" value="" required>
+                                      </div>
 
-                                        <div class="mb-4">
-                                            <label class="text-xl text-gray-600">Description</label></br>
-                                            <input type="text" value="{{ obj.description }}" class="border-2 border-gray-300 p-2 w-full" name="description" id="description" placeholder="(Optional)">
-                                        </div>
+                                      <div class="mb-4">
+                                          <label class="text-xl text-gray-600">Description</label></br>
+                                          <input type="text" value="{{ obj.description }}" class="border-2 border-gray-300 p-2 w-full" name="description" id="description" placeholder="(Optional)">
+                                      </div>
 
-                                        <div class="mb-4">
-                                            <label class="text-xl text-gray-600">Thumbnail image</label></br>
-                                            <input type="text" value="{{ obj.blog_profile_img }}" class="border-2 border-gray-300 p-2 w-full" name="Thumbnail" id="Thumbnail" placeholder="(Optional)">
-                                        </div>
+                                      <div class="mb-4">
+                                          <label class="text-xl text-gray-600">Thumbnail image</label></br>
+                                          <input type="text" value="{{ obj.blog_profile_img }}" class="border-2 border-gray-300 p-2 w-full" name="Thumbnail" id="Thumbnail" placeholder="(Optional)">
+                                      </div>
 
-                                        <div class="mb-4">
-                                            <label class="text-xl text-gray-600">Category</label></br>
-                                            <input type="text" value="{{ obj.categories }}" class="border-2 border-gray-300 p-2 w-full" name="Category" id="Category" placeholder="(Optional)">
-                                        </div>
+                                      <div class="mb-4">
+                                          <label class="text-xl text-gray-600">Category</label></br>
+                                          <input type="text" value="{{ obj.categories }}" class="border-2 border-gray-300 p-2 w-full" name="Category" id="Category" placeholder="(Optional)">
+                                      </div>
 
-                                        <div class="mb-8">
-                                            <label class="text-xl text-gray-600">Content <span class="text-red-500">*</span></label></br>
-                                            <textarea name="editor2" id="editor2" class="border-2 border-gray-500">
-                                                
-                                            </textarea>
-                                        </div>
+                                      <div class="mb-8">
+                                          <label class="text-xl text-gray-600">Content <span class="text-red-500">*</span></label></br>
+                                          <textarea name="editor2" id="editor2" class="border-2 border-gray-500">
+                                              
+                                          </textarea>
+                                      </div>
 
-                                        <div class="flex p-1">
-                                            <select class="border-2 border-gray-300 border-r p-2" name="action">
-                                                <option>Save and Publish</option>
-                                                <option>Save Draft</option>
-                                            </select>
-                                            <button onclick="img_upload('save_edit_blog/{{ obj.id }}','#content',['#title','#description','#Category','#Thumbnail'],{{ obj.id }})" class="p-3 bg-blue-500 text-white hover:bg-blue-400" required>Submit</button>
+                                      <div class="flex p-1">
+                                          <select class="border-2 border-gray-300 border-r p-2" name="action">
+                                              <option>Save and Publish</option>
+                                              <option>Save Draft</option>
+                                          </select>
+                                          <button onclick="img_upload('save_edit_blog/{{ obj.id }}','#content',['#title','#description','#Category','#Thumbnail'],'{{ obj.id }}')" class="p-3 bg-blue-500 text-white hover:bg-blue-400" required>Submit</button>
                                         </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" id="content2">
-                        <div style="    padding: 23px;" class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                            <p>The number of <code>change</code> events: <strong><span id="changes"></span></strong>.</p>
-                            <h3>Mirrored Content</h3>
-                            <hr style="    border-top-width: 1px; margin-top: 14px;">
-                            <div id="editorcontent2" class="p-6 bg-white border-b border-gray-200">
-                            </div>
-                        </div>
-                    </div>
-            <!-- main-panel ends -->
-            </div>
-            <!-- page-body-wrapper ends -->
-        </div>
+                                  </form>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" id="content2">
+                      <div style="    padding: 23px;" class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                          <p>The number of <code>change</code> events: <strong><span id="changes"></span></strong>.</p>
+                          <h3>Mirrored Content</h3>
+                          <hr style="    border-top-width: 1px; margin-top: 14px;">
+                          <div id="editorcontent2" class="p-6 bg-white border-b border-gray-200">
+                          </div>
+                      </div>
+                  </div>
+          <!-- main-panel ends -->
+          </div>
+          <!-- page-body-wrapper ends -->
+      </div>
         <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
         <script>
             function load(){
