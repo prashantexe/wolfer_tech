@@ -204,10 +204,7 @@ def delete_blog(request):
     page = blog.objects.get(id=bl_id)
     page.delete()
     return render(request,"home/view_blog.html",reguler_datas({'blog':page}))
-<<<<<<< HEAD
 
-=======
->>>>>>> 8cc4122a1246ba2e3d48f400604422a66dc949fd
 
 @login_required(login_url='/FourNotFout')
 def list_edit_blog(request):
@@ -566,10 +563,7 @@ def EDI (request):
 
 def angelInvestor (request):
     return render(request,"angelinvestor.html",reguler_datas())
-<<<<<<< HEAD
-=======
 
->>>>>>> 8cc4122a1246ba2e3d48f400604422a66dc949fd
 
 def MentorConnect (request):
     return render(request,"mentorconnect.html",reguler_datas({'mentor':MentorConnectDB.objects.all()[::-1]}))
@@ -658,10 +652,6 @@ def home(request):
     except:
         print("maybe database are empty")
     return render(request,"pages/home_edit.html",reguler_datas())
-<<<<<<< HEAD
-
-=======
->>>>>>> 8cc4122a1246ba2e3d48f400604422a66dc949fd
 
 @login_required(login_url='/FourNotFout')
 def home_edit(request):
@@ -1428,10 +1418,6 @@ def carrer_convert_excel(request):
     
 def contact(request):
     return render(request,"contact.html",reguler_datas({'ContactEditPage':ContactEditPage.objects.all()[::-1]}))
-<<<<<<< HEAD
-
-=======
->>>>>>> 8cc4122a1246ba2e3d48f400604422a66dc949fd
 
 @login_required(login_url='/FourNotFout')
 def contact_edit(request):

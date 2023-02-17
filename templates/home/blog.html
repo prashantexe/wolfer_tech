@@ -19,19 +19,9 @@
         <div class="container flex-lg-row flex-nowrap align-items-center">
           <div class="navbar-brand w-100">
             <a href="/">
-              <img
-                class="logo-dark"
-                src="{% static 'icon-dummy.png' %}"
-                srcset="{% static 'icon-dummy.png' %} 6x"
-                alt=""
-              />
-              <img
-                class="logo-light"
-                src="{% static 'icon-dummy.png' %}"
-                srcset="{% static 'icon-dummy.png' %} 6x"
-                alt=""
-              />
-            </a>
+                <img class="logo-dark" src=" {{ logo.image.url }}" class="mr-2" srcset=" {{ logo.image.url }} 6x" alt="" />
+                <img class="logo-light" src=" {{ logo.image.url }}" srcset=" {{ logo.image.url }} 6x" alt="" />
+              </a>
           </div>
           <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
             <div class="offcanvas-header d-lg-none">
@@ -351,7 +341,7 @@
               </p>
               <p class="inline-flex items-center text-gray-600">
                 <button
-                  onclick="get_blog({{ j.id }})"
+                  onclick="get_blog('{{ j.id }}')"
                   class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800"
                 >
                   <span

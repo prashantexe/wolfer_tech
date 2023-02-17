@@ -33,13 +33,9 @@
         >
           <div class="container flex-lg-row flex-nowrap align-items-center">
             <div class="navbar-brand w-100">
-              <a href="#">
-                <img
-                  src=" {% static 'icon-dummy.png' %} "
-                  srcse {% static 't="./ass' %} ets/img/logo@2x.png 2x" style="width:60px; margin-left: 50px
-                  ;"
-                  alt=""
-                />
+              <a href="/">
+                <img class="logo-dark" src=" {{ logo.image.url }}" class="mr-2" srcset=" {{ logo.image.url }} 6x" alt="" />
+                <img class="logo-light" src=" {{ logo.image.url }}" srcset=" {{ logo.image.url }} 6x" alt="" />
               </a>
             </div>
             <div

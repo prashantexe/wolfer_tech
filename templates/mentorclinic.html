@@ -22,8 +22,8 @@
         <div class="container flex-lg-row flex-nowrap align-items-center">
           <div class="navbar-brand w-100">
             <a href="/">
-              <img class="logo-dark" src="{% static 'icon-dummy.png' %}" srcset="{% static 'icon-dummy.png' %} 6x" alt="" />
-              <img class="logo-light" src="{% static 'icon-dummy.png' %}" srcset="{% static 'icon-dummy.png' %} 6x" alt="" />
+              <img class="logo-dark" src=" {{ logo.image.url }}" class="mr-2" srcset=" {{ logo.image.url }} 6x" alt="" />
+              <img class="logo-light" src=" {{ logo.image.url }}" srcset=" {{ logo.image.url }} 6x" alt="" />
             </a>
           </div>
           <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
