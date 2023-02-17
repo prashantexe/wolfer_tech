@@ -14,25 +14,29 @@ import os
 # Import HttpResponse module
 from django.http.response import HttpResponse
 # Create your views here.
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate,login, logout
+from django.contrib.auth.decorators import login_required
+
 
 
 def admin_home(request):
     return render(request,"Login.html",reguler_datas())
 
+
+
 def admin_home_auth(request):
-    ids = ['#email','#password']
+    ids = ['email','password']
     user = request.POST.get(ids[0])
     password = request.POST.get(ids[1])
     print(user,password)
     user = authenticate(username=user, password=password)
     if user is not None:
-        redirect(admin_home)
+        login(request, user)
+        return redirect(update_logo)
     else:
-        redirect(admin_home_auth)
-    return render(request,"Login.html",reguler_datas())
+        return redirect(admin_home)
 
-
+@login_required()
 def admin(request):
     item = get_images()
     return render(request,"pages/empty.html",reguler_datas({"categories":item[0],"images":item[1]}))
