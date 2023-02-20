@@ -96,6 +96,8 @@ class About_SISFS(models.Model):
     topic = models.CharField(max_length = 200)
     last_updated_date = models.DateField(default=timezone.now())
 
+
+
 class Facilities_developed(models.Model):
     FD_id = models.IntegerField(primary_key=True)
     topic = models.CharField(max_length = 200)
