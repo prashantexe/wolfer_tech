@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Categories</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href=" {% static 'vendors/feather/feather.css' %} ">
+  <link rel="stylesheet" href=" {% static 'vendors/ti-icons/css/themify-icons.css' %} ">
+  <link rel="stylesheet" href=" {% static 'vendors/css/vendor.bundle.base.css' %} ">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href=" {% static 'vendors/select2/select2.min.css' %} ">
+  <link rel="stylesheet" href=" {% static 'vendors/select2-bootstrap-theme/select2-bootstrap.min.css' %} ">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href=" {% static 'css/vertical-layout-light/style.css' %} ">
+  <!-- endinject -->
+  <link rel="shortcut icon" href=" {% static 'images/favicon.png' %} " />
+  <link href= "https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container-scroller d-flex">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar col-lg-16 col-15 p-0 fixed-top d-flex flex-row bg-light" >
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo mr-5" href="# "><img src=" {{ logo.image.url }} " class="mr-2" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="# "><img src=" {{ logo.image.url }} " alt="logo"/></a>
+      </div>
+      <div class="add-items d-flex px-3 mb-0">
+        <a href="/logout_admin">
+            <button type="submit" class="add btn btn-primary todo-list-add-btn" id="add-task">Logout</button>
+          </a></div>
+    </nav>
+    <div class="container-fluid page-body-wrapper" style="z-index: 999;" >
+    <nav class="sidebar sidebar-offcanvas" style="width: 400px;" id="sidebar">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#homw" aria-expanded="false" aria-controls="ui-basic">
+            <!-- <iconify-icon icon="mdi:about" width="20" height="20"></iconify-icon> -->
+            <iconify-icon  width="20" height="20"  icon="material-symbols:home"></iconify-icon>
+            <span class="menu-title ml-4 pt-1">Home</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="homw">
+            <ul class="nav flex-column sub-menu " >
+              <li class="nav-item"> <a class="nav-link" href=" /home_edit">Home - page</a></li>
+              <li class="nav-item"> <a class="nav-link" href="/logo ">Logo - edit</a></li>
+            
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <iconify-icon icon="mdi:about" width="20" height="20"></iconify-icon>
+            <span class="menu-title  ml-4 pt-1">About Us</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="ui-basic">
+            <ul class="nav flex-column sub-menu " >
+              <li class="nav-item"> <a class="nav-link" href=" /about_edit ">About - page</a></li>
+              <li class="nav-item"> <a class="nav-link" href="/admin_team ">Team</a></li>
+              <li class="nav-item"> <a class="nav-link" href="/image_upload_page_gallery ">Gallery</a></li>
+              <li class="nav-item"> <a class="nav-link" href="#">Career</a></li>
+              <li class="nav-item"> <a class="nav-link" href="#">Event-form</a></li>
+              <li class="nav-item"> <a class="nav-link" href="/testimonicals_edit ">Testimonials</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+            <iconify-icon icon="ic:twotone-attach-money" width="20" height="20"></iconify-icon>
+            <span class="menu-title  ml-4 pt-1">Government Funding</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse " id="form-elements">
+            <ul class="nav flex-column sub-menu flex-wrap  " style="display: block; z-index: 09999999;">
+              <li class="nav-item"><a class="nav-link" href="/birac_edit ">Ministry of Science and Technology</a></li>
+              <li class="nav-item"><a class="nav-link" href=" /sisfs_edit ">Ministry of commerce and industries</a></li>
+              <li class="nav-item"><a class="nav-link" href=" /fishieries">Fisheries startup Grand Challenge</a></li>
+              <li class="nav-item"><a class="nav-link" href="/samridth_edit ">Ministry of Electronics and IT</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Ministry of Education</a></li>
+              <li class="nav-item"><a class="nav-link" href="/startuptn_edit ">Start_UpTN</a></li>
+              <li class="nav-item"><a class="nav-link" href="/edi_edit ">EDII-IVP</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#charts_1" aria-expanded="false" aria-controls="charts">
+            <iconify-icon icon="ic:outline-miscellaneous-services" width="20" height="20"></iconify-icon>
+            <span class="menu-title ml-4 pt-1">Services</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="charts_1">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href=" /service_edit ">Edit Page</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
+            <iconify-icon icon="icon-park-outline:user-business" width="20" height="20"></iconify-icon>
+            <span class="menu-title ml-4 pt-1">MBA-IEV</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="charts">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href=" MBA_edit ">MBA-IEV EDIT page</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
+            <iconify-icon icon="mdi:company" width="20" height="20"></iconify-icon>
+            <span class="menu-title ml-4 pt-1"> Our Startups</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="tables">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href=" /ourStartups_edit ">Edit Page</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#blog" aria-expanded="false" aria-controls="icons">
+            <iconify-icon icon="dashicons:welcome-write-blog" width="20" height="20"></iconify-icon>
+            <span class="menu-title ml-4 pt-1">Blog</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="blog">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href=" /list_edit_blog">Blog Edit Page</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
+            <iconify-icon icon="arcticons:netbenefits" width="20" height="20"></iconify-icon>
+            <span class="menu-title ml-4 pt-1">Benefits</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="icons">
+            <h5 class="m-2 p-4 primary">Mentor</h5>
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href=" /Mentor_Clinic_edit ">Mentor Clinic</a></li>
+              <li class="nav-item"> <a class="nav-link" href=" /Mentor_Connect_edit ">Mentor Connect</a></li>
+            </ul>
+            <h5 class="m-2 p-4 primary">Market</h5>
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href=" /GlobalMarket_edit ">Global Market Connect</a></li>
+              <li class="nav-item"> <a class="nav-link" href=" /demoday_edit ">Demo day</a></li>
+            </ul>
+
+            <h5 class="m-2 p-4 primary">Money</h5>
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href=" /stategovtfunds_edit ">State Govt Funding</a></li>
+              <li class="nav-item"> <a class="nav-link" href=" /CentralGovernmentFunding_edit ">central govt Funding</a></li>
+              <li class="nav-item"> <a class="nav-link" href=" /angelInvestor_edit ">Angel Investors</a></li>
+              <li class="nav-item"> <a class="nav-link" href=" /new_ventures_edit ">Venture Capitalist</a></li>
+            </ul>
+          </div>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+            <i class="icon-head menu-icon"></i>
+            <span class="menu-title mt-2 pt-1">Contact - Us</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="auth">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="contact_edit "> Edit Page </a></li>
+            </ul>
+          </div>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+            <iconify-icon icon="material-symbols:connect-without-contact" width="20" height="20"></iconify-icon>
+            <span class="menu-title ml-4 pt-1">Contact - Us</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="auth">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="/contact_edit ">  edit page </a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#foot" aria-expanded="false" aria-controls="auth">
+            <iconify-icon icon="fluent:document-footer-20-filled" width="20" height="20"></iconify-icon>
+            <span class="menu-title ml-4 pt-1">Footer</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="foot">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="/footer_edit "> Footer edit page </a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#error" aria-expanded="false" aria-controls="error">
+            <iconify-icon icon="carbon:data-1" width="20" height="20"></iconify-icon>
+            <span class="menu-title ml-4 pt-1">Forms data Download</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="error">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="/carrer_convert_excel"> Career Form </a></li>
+              <li class="nav-item"> <a class="nav-link" href=" /convert_excel "> Events Form </a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+
+
+
+
+      <!-- partial -->
+      <div class="main-panel">        
+        <div class="content-wrapper">
+            <!-- slider section -->
+            <div class="flex justify-center font-semibold">
+            <h1 class="card-title">Categories</h1>
+          </div>
+            <div class="row">
+                <div class="col-md-12 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                    
+                      <!-- <h4 class=" my-1" >Upload Image</h4> -->
+                      <!-- <p class="card-description">
+                       Upload image to  the home slider
+                      </p> -->
+                      <form class="forms-sample" enctype="multipart/form-data" method="post">
+                        {% csrf_token %}
+                        <div class="form-group mt-2">
+                          <label for="exampleInputEmail1">Category for Gallery</label>
+                          <input type="text" class="form-control" placeholder="" id="Appear" value="{{ Uploadimage.0.Title }}" name="Appear-on-to-of-image"><br>
+                          <button id="btn" onclick="img_upload('upload_images','#fileInput-single8',['#Appear','#Appear-image'])" class="btn btn-primary mr-2">Submit</button>
+                        </div>
+                        
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="col-md-12 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                    
+                      <!-- <h4 class=" my-1" >Upload Image</h4> -->
+                      <!-- <p class="card-description">
+                       Upload image to  the home slider
+                      </p> -->
+                      <form class="forms-sample" enctype="multipart/form-data" method="post">
+                        {% csrf_token %}
+                        <div class="form-group mt-2">
+                          <label for="exampleInputEmail1">Category for Teams</label>
+                          <input type="text" class="form-control" placeholder="" id="Appear" value="{{ Uploadimage.0.Title }}" name="Appear-on-to-of-image"><br>
+                          <button id="btn" onclick="img_upload('upload_images','#fileInput-single8',['#Appear','#Appear-image'])" class="btn btn-primary mr-2">Submit</button>
+                        </div>
+                        
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                    
+                      <!-- <h4 class=" my-1" >Upload Image</h4> -->
+                      <!-- <p class="card-description">
+                       Upload image to  the home slider
+                      </p> -->
+                      <form class="forms-sample" enctype="multipart/form-data" method="post">
+                        {% csrf_token %}
+                        <div class="form-group mt-2">
+                          <label for="exampleInputEmail1">Category for Events</label>
+                          <input type="text" class="form-control" placeholder="" id="Appear" value="{{ Uploadimage.0.Title }}" name="Appear-on-to-of-image"><br>
+                          <button id="btn" onclick="img_upload('upload_images','#fileInput-single8',['#Appear','#Appear-image'])" class="btn btn-primary mr-2">Submit</button>
+                        </div>
+                        
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                    
+                      <!-- <h4 class=" my-1" >Upload Image</h4> -->
+                      <!-- <p class="card-description">
+                       Upload image to  the home slider
+                      </p> -->
+                      <form class="forms-sample" enctype="multipart/form-data" method="post">
+                        {% csrf_token %}
+                        <div class="form-group mt-2">
+                          <label for="exampleInputEmail1">Category for Qualification</label>
+                          <input type="text" class="form-control" placeholder="" id="Appear" value="{{ Uploadimage.0.Title }}" name="Appear-on-to-of-image"><br>
+                          <button id="btn" onclick="img_upload('upload_images','#fileInput-single8',['#Appear','#Appear-image'])" class="btn btn-primary mr-2">Submit</button>
+                        </div>
+                        
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="col-md-12 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                    
+                      <!-- <h4 class=" my-1" >Upload Image</h4> -->
+                      <!-- <p class="card-description">
+                       Upload image to  the home slider
+                      </p> -->
+                      <form class="forms-sample" enctype="multipart/form-data" method="post">
+                        {% csrf_token %}
+                        <div class="form-group mt-2">
+                          <label for="exampleInputEmail1">Category for Experience</label>
+                          <input type="text" class="form-control" placeholder="" id="Appear" value="{{ Uploadimage.0.Title }}" name="Appear-on-to-of-image"><br>
+                          <button id="btn" onclick="img_upload('upload_images','#fileInput-single8',['#Appear','#Appear-image'])" class="btn btn-primary mr-2">Submit</button>
+                        </div>
+                        
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                    
+                      <!-- <h4 class=" my-1" >Upload Image</h4> -->
+                      <!-- <p class="card-description">
+                       Upload image to  the home slider
+                      </p> -->
+                      <form class="forms-sample" enctype="multipart/form-data" method="post">
+                        {% csrf_token %}
+                        <div class="form-group mt-2">
+                          <label for="exampleInputEmail1">Category for Blogs</label>
+                          <input type="text" class="form-control" placeholder="" id="Appear" value="{{ Uploadimage.0.Title }}" name="Appear-on-to-of-image"><br>
+                          <button id="btn" onclick="img_upload('upload_images','#fileInput-single8',['#Appear','#Appear-image'])" class="btn btn-primary mr-2">Submit</button>
+                        </div>
+                        
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                    
+                      <!-- <h4 class=" my-1" >Upload Image</h4> -->
+                      <!-- <p class="card-description">
+                       Upload image to  the home slider
+                      </p> -->
+                      <form class="forms-sample" enctype="multipart/form-data" method="post">
+                        {% csrf_token %}
+                        <div class="form-group mt-2">
+                          <label for="exampleInputEmail1">Category for Startups</label>
+                          <input type="text" class="form-control" placeholder="" id="Appear" value="{{ Uploadimage.0.Title }}" name="Appear-on-to-of-image"><br>
+                          <button id="btn" onclick="img_upload('upload_images','#fileInput-single8',['#Appear','#Appear-image'])" class="btn btn-primary mr-2">Submit</button>
+                        </div>
+                        
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+
+           </div>
+             <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  </div>
+  
+  <script>
+       function send_data(url,datas) {
+                
+                console.log(datas,url)
+                var data = new FormData();
+                data.append("csrfmiddlewaretoken", $("input[name=csrfmiddlewaretoken]").val());
+                for(let i=0;i<datas.length;i++){
+                  data.append(datas[i],$(datas[i]).val())
+                }
+                $.ajax({
+                    method: "POST",
+                    url: url,
+                    processData: false,
+                    contentType: false,
+                    mimeType: "multipart/form-data",
+                    data: data,
+                    success: function(data) {
+                        if (data.status == "Upload Done") {
+                            console.log("Uploading Done successfully")
+                        }
+                        else{
+                            console.log('error')
+                        }
+                    }
+                })
+              }
+              function img_upload(url,img,datas) {
+                console.log(datas,img)
+                var data = new FormData();
+                data.append(img, $(img)[0].files[0]);
+                data.append("csrfmiddlewaretoken", $("input[name=csrfmiddlewaretoken]").val());
+                for(let i=0;i<datas.length;i++){
+                  data.append(datas[i],$(datas[i]).val())
+                }
+                $.ajax({
+                    method: "POST",
+                    url: url,
+                    processData: false,
+                    contentType: false,
+                    mimeType: "multipart/form-data",
+                    data: data,
+                    success: function(data) {
+                        if (data.status == "Upload Done") {
+                            console.log("Uploading Done successfully")
+                        }
+                        else{
+                            console.log('error')
+                        }
+                    }
+                })
+              }
+              function del(url,id) {
+                    $.ajax({
+                        method: "POST",
+                        url: url,
+                        data: {
+                            'id': id,
+                            'csrfmiddlewaretoken': $("input[name=csrfmiddlewaretoken]").val()
+                        }, success: function (data) {
+                            location.reload();
+                        }
+                    });
+            }
+  </script>
+  <!-- container-scroller -->
+  <!-- plugins:js -->
+  <script src=" {% static 'vendors/js/vendor.bundle.base.js' %} "></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src=" {% static 'vendors/typeahead.js/typeahead.bundle.min.js' %} "></script>
+  <script src=" {% static 'vendors/select2/select2.min.js' %} "></script>
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src=" {% static 'js/off-canvas.js' %} "></script>
+  <script src=" {% static 'js/hoverable-collapse.js' %} "></script>
+  <script src=" {% static 'js/template.js' %} "></script>
+  <script src=" {% static 'js/settings.js' %} "></script>
+  <script src=" {% static 'js/todolist.js' %} "></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src=" {% static 'js/file-upload.js' %} "></script>
+  <script src=" {% static 'js/typeahead.js' %} "></script>
+  <script src=" {% static 'js/select2.js' %} "></script>
+  <!-- End custom js for this page-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.3/iconify-icon.min.js"></script>
+</body>
+
+</html>

@@ -673,6 +673,28 @@ def home_edit(request):
         print("maybe database are empty")
     return render(request,"pages/home_edit.html",reguler_datas())
 
+
+
+@login_required(login_url='/FourNotFout')
+def Category(request):
+    try :
+        whoweare = WhoAreWe.objects.all()[::-1]
+        home_TESTIMONIAL =  HOME_TESTIMONIAL.objects.all()[::-1]
+        contact_Section =  Contact_SECTION.objects.all()[::-1]
+        investors = Investors.objects.all()[::-1]
+        Internationalpartners = International_Partners.objects.all()[::-1]
+        govt = Govt_Tie.objects.all()[::-1]
+        Uploadimage = UploadImage.objects.all()[::-1]
+
+
+        return render(request,"pages/category_edit.html",reguler_datas({'whoweare':whoweare,'ht':home_TESTIMONIAL,'cs':contact_Section,'investors':investors,'ip':Internationalpartners,'govt':govt,'Uploadimage':Uploadimage}))
+    except:
+        print("maybe database are empty")
+    return render(request,"pages/category_edit.html",reguler_datas())
+
+
+
+
 def delete_upload(request):
     bl_id = request.POST.get("id")
     page = UploadImage.objects.get(id=bl_id)

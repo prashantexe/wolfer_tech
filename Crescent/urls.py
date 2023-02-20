@@ -142,6 +142,7 @@ urlpatterns = [
     path("gallery",views.gallery),
 
     path("home_edit",views.home_edit),
+    path("category_edit",views.Category),
     path("whoweare_save",views.Whoweare),
     path("Home_TESTIMONIAL",views.Home_TESTIMONIAL),
     path("Contact_Section",views.Contact_Section),
